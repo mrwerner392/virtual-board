@@ -20,10 +20,8 @@ class WhiteBoard {
         const toDoList = document.querySelector('#to-do-list')
         toDoList.innerHTML = '';
         this.toDos.forEach(toDoObj => {
-            let toDo = new ToDo(toDoObj.content, toDoObj.id)
+            let toDo = new ToDo(toDoObj.content, toDoObj.id, this.id, this.userId)
             toDoList.append(toDo.render())
-
-            // pull from todo.js
         })
 
         let toDoForm = document.createElement('form')

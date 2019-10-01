@@ -7,4 +7,10 @@ class ToDosController < ApplicationController
     end
   end
 
+  def destroy
+    to_do = ToDo.find(params[:id])
+    to_do.destroy
+    render json: {}
+  end
+
 end
