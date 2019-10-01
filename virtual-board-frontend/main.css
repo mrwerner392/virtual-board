@@ -3,16 +3,16 @@
     width: 100vw;
     display: grid;
     grid-template-columns: 15% 85%;
-    grid-template-rows: 10% 90%;
+    /* grid-template-rows: 10% 90%; */
     grid-template-areas:
-        'nav-bar nav-bar'
+        /* 'nav-bar nav-bar' */
         'side-bar wb-container';
 }
 
-#nav-bar {
+/* #nav-bar {
     grid-area: nav-bar;
     background-color: pink;
-}
+} */
 
 #side-bar {
     grid-area: side-bar;

@@ -9,6 +9,7 @@ class User {
 
   static renderUsersList(userData) {
     const sideBar = document.querySelector('#side-bar');
+    sideBar.innerText = 'Returning User';
     userData.forEach(userObj => {
 
       let pTag = document.createElement('p');
@@ -56,11 +57,12 @@ class User {
 
   }
 
-  // makePTag(user) {
-  //   const sideBar = document.querySelector('#side-bar');
-  //   let pTag = document.createElement('p');
-  //   pTag.innerText = user.name;
-  //   sideBar.append(pTag)
-  // }
+  makePTag() {
+    // const sideBar = document.querySelector('#side-bar');
+    let pTag = document.createElement('p');
+    pTag.innerText = this.name;
+    // sideBar.append(pTag)
+    return pTag
+  }
 
 }

@@ -1,3 +1,1 @@
-const sideBar = document.querySelector('#side-bar');
-
-UserAdapter.getAllUsers(User.renderUsersList);
+const sideBar = new SideBar();
