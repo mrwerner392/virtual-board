@@ -3,6 +3,8 @@
     <head>
         <meta charset='utf-8'>
         <title>Virtual Board</title>
+        <script defer type='text/javascript' src='src/WhiteBoard.js'></script>
+        <script defer type='text/javascript' src='src/ToDo.js'></script>
         <script defer type='text/javascript' src='src/User.js'></script>
         <script defer type='text/javascript' src='src/UserForm.js'></script>
         <script defer type='text/javascript' src='src/UserAdapter.js'></script>
@@ -17,7 +19,9 @@
             <div id='wb-container'>
                 <div id='wb-title'></div>
                 <div id='white-board'>
-                    <div id='to-dos' class="wb-section" ></div>
+                    <div id='to-dos' class="wb-section" >
+                        <ul id='to-do-list'></ul>
+                    </div>
                     <div id='quotes' class="wb-section" ></div>
                     <div id='doodles' class="wb-section" ></div>
                     <div id='krazy-thoughts'class="wb-section" ></div>

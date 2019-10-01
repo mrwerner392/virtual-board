@@ -27,7 +27,7 @@ class UserAdapter {
     })
     .then(resp => resp.json())
     .then(userObj => {
-      let newUser = new User(userObj.id, userObj.name, userObj.age, userObj.bio)
+      let newUser = new User(userObj.id, userObj.name, userObj.age, userObj.bio, userObj.whiteboard)
       newUser.renderProfile()
     })
   }
@@ -47,7 +47,7 @@ class UserAdapter {
     })
     .then(res => res.json())
     .then(userObj => {
-      let updatedUser = new User(userObj.id, userObj.name, userObj.age, userObj.bio);
+      let updatedUser = new User(userObj.id, userObj.name, userObj.age, userObj.bio, userObj.whiteboard);
       updatedUser.renderProfile();
     });
   };

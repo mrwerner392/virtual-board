@@ -1,10 +1,11 @@
 class User {
 
-  constructor(id, name, age, bio) {
+  constructor(id, name, age, bio, whiteboard) {
     this.id = id;
     this.name = name;
     this.age = age;
     this.bio = bio;
+    this.whiteboard = whiteboard
   };
 
   renderProfile() {
@@ -50,7 +51,12 @@ class User {
   }
 
   renderWhiteboard() {
-
+    let whiteboard = new WhiteBoard(this.whiteboard.title, this.whiteboard.to_dos)
+    whiteboard.renderTitle()
+    whiteboard.renderToDos()
+    // const wbTitle = document.querySelector('#wb-title')
+    // // eventually will target white board conatiner and other elements
+    // wbTitle.innerText = this.whiteboard.title
   }
 
   makePTag() {
@@ -60,7 +66,7 @@ class User {
 
     pTag.addEventListener('click', () => {
       this.renderProfile()
-      // this.renderWhiteboard()
+      this.renderWhiteboard()
 
     })
     // sideBar.append(pTag)

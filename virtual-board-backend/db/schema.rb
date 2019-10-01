@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_212807) do
+ActiveRecord::Schema.define(version: 2019_10_01_213130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "to_dos", force: :cascade do |t|
+    t.string "content"
+    t.bigint "whiteboard_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["whiteboard_id"], name: "index_to_dos_on_whiteboard_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -23,4 +31,14 @@ ActiveRecord::Schema.define(version: 2019_09_30_212807) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "whiteboards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_whiteboards_on_user_id"
+  end
+
+  add_foreign_key "to_dos", "whiteboards"
+  add_foreign_key "whiteboards", "users"
 end
