@@ -5,10 +5,10 @@ class SideBar {
     this.usersList = [];
 
     UserAdapter.getAllUsers(usersData => {
-      console.log(usersData)
+      // console.log(usersData)
       usersData.forEach(userObj => {
-        let user = new User(userObj.id, userObj.name, userObj.age, userObj.bio);
-        // console.log(user);
+        let user = new User(userObj.id, userObj.name, userObj.age, userObj.bio, userObj.whiteboard);
+        console.log(user);
         this.content.append(user.makePTag());
       });
     });
