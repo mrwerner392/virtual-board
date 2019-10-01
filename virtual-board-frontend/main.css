@@ -3,20 +3,21 @@
     width: 100vw;
     display: grid;
     grid-template-columns: 15% 85%;
-    grid-template-rows: 10% 90%;
-    grid-template-areas:  
-        'nav-bar nav-bar'
+    /* grid-template-rows: 10% 90%; */
+    grid-template-areas:
+        /* 'nav-bar nav-bar' */
         'side-bar wb-container';
 }
 
-#nav-bar {
+/* #nav-bar {
     grid-area: nav-bar;
-    background-color: red;
-}
+    background-color: pink;
+} */
 
 #side-bar {
     grid-area: side-bar;
-    background-color: blue;
+    background-color: lime;
+    text-align: center;
 }
 
 /* grid for wb-container*/
@@ -56,20 +57,20 @@
 
 #to-dos {
     grid-area: to-dos;
-    background-color: black;
+    background-color: lightblue;
 }
 
 #quotes {
     grid-area: quotes;
-    background-color: purple;
+    background-color: magenta;
 }
 
 #doodles {
     grid-area: doodles;
-    background-color: red;
+    background-color: pink;
 }
 
-#krazy-thoughts { 
+#krazy-thoughts {
     grid-area: krazy-thoughts;
-    background-color: green;
+    background-color: lime;
 }
