@@ -12,6 +12,11 @@ class SideBar {
       });
     });
 
+
+    let userForm = new UserForm()
+    this.content.append(userForm.form) 
+
+
   };
 
 

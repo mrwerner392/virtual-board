@@ -12,6 +12,10 @@ class UserAdapter {
   //   .then(userObj => sideBar.innerText = userObj.name)
   // }
 
+  static addUser(callback, name, age, bio) {
+    fetch('http://localhost:3000/users', {
+    })
+  }
 
 
 }

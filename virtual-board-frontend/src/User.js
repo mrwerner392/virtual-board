@@ -6,18 +6,6 @@ class User {
     this.age = age;
     this.bio = bio;
   };
-
-  // static renderUsersList(userData) {
-  //   const sideBar = document.querySelector('#side-bar');
-  //   sideBar.innerText = 'Returning User';
-  //   userData.forEach(userObj => {
-
-  //     let pTag = document.createElement('p');
-  //     pTag.innerText = userObj.name;
-  //     sideBar.append(pTag)
-
-  //   });
-  // };
   
   renderProfile() {
     sideBar.content.innerHTML = '';
