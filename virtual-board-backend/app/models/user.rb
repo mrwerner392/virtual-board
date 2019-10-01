@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-    has_one :whiteboard
+    has_one :whiteboard, dependent: :destroy
 end

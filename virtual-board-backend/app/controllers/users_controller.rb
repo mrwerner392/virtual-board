@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(name: params[:name], age: params[:age], bio: params[:bio])
     if user.save
+      user.whiteboard = Whiteboard.create(title: "#{user.name}'s WhiteBoard")
       render json: user,  include: '**'
     end
   end
