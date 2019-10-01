@@ -25,6 +25,11 @@ class UserAdapter {
         bio: bio
       })
     })
+    .then(resp => resp.json())
+    .then(userObj => {
+      let newUser = new User(userObj.id, userObj.name, userObj.age, userObj.bio)
+      newUser.renderProfile()
+    })
   }
 
 
