@@ -1,16 +1,29 @@
 class ToDo{
 
-    constructor(content, id){
+    constructor(content, id, whiteboardId, userId){
         this.content = content
         this.id = id
+        this.whiteboardId = whiteboardId
+        this.userId = userId
     }
 
     render(){
-        const toDoList = document.querySelector('#to-do-list')
         let toDoLi = document.createElement('li')
         toDoLi.innerText = this.content
-        toDoList.append(toDoLi)
-        console.log(this)
+
+        let deleteButton = document.createElement('button');
+        deleteButton.innerText = 'x';
+        toDoLi.append(deleteButton);
+
+        deleteButton.addEventListener('click', () => {
+          fetch(`http:localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/to_dos/${this.id}`, {
+            method: 'DELETE'
+          })
+          .then(res => res.json())
+          .then(toDoLi.remove())
+        })
+
+        return toDoLi;
     }
 
 
