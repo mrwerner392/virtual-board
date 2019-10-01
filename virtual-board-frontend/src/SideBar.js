@@ -13,8 +13,8 @@ class SideBar {
     });
 
 
-    let userForm = new UserForm()
-    this.content.append(userForm.form) 
+    let newUserForm = new UserForm(UserAdapter.addUser)
+    this.content.append(newUserForm.form)
 
 
   };

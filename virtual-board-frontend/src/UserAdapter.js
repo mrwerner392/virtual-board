@@ -32,5 +32,24 @@ class UserAdapter {
     })
   }
 
+  static updateUser(name, age, bio, id) {
+    fetch('http://localhost:3000/users/' + id, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        age: age,
+        bio: bio
+      })
+    })
+    .then(res => res.json())
+    .then(userObj => {
+      let updatedUser = new User(userObj.id, userObj.name, userObj.age, userObj.bio);
+      updatedUser.renderProfile();
+    })
+  }
 
 }
