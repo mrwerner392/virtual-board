@@ -6,11 +6,11 @@ class ToDo{
     }
 
     render(){
-        const toDoList = document.querySelector('#to-do-list')
+        // const toDoList = document.querySelector('#to-do-list')
         let toDoLi = document.createElement('li')
         toDoLi.innerText = this.content
-        toDoList.append(toDoLi)
-        console.log(this)
+        return toDoLi;
+        // toDoList.append(toDoLi)
     }
 
 
