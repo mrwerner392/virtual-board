@@ -25,7 +25,7 @@ class UserForm{
             const name = this.name.value
             const age = this.age.value
             const bio = this.bio.value
-            console.log(name, age, bio)
+            UserAdapter.addUser(name, age, bio)
         })
     }
 

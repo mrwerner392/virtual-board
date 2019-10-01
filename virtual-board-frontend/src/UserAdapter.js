@@ -12,8 +12,18 @@ class UserAdapter {
   //   .then(userObj => sideBar.innerText = userObj.name)
   // }
 
-  static addUser(callback, name, age, bio) {
+  static addUser(name, age, bio, callback) {
     fetch('http://localhost:3000/users', {
+      method: "POST",
+      headers: {
+        'Content-Type': "application/json",
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        age: age,
+        bio: bio
+      })
     })
   }
 
