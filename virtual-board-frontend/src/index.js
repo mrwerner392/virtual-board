@@ -1,1 +1,1 @@
-const sideBar = new SideBar();
+let sideBar = new SideBar();

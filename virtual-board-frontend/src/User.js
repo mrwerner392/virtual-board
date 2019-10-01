@@ -40,6 +40,13 @@ class User {
     })
     sideBar.content.append(updateUserButton)
 
+    let deleteUserButton = document.createElement('button');
+    deleteUserButton.innerText = 'Delete Profile';
+    deleteUserButton.addEventListener('click', () => {
+      UserAdapter.deleteUser(this.id);
+    });
+    sideBar.content.append(deleteUserButton);
+
   }
 
   renderWhiteboard() {

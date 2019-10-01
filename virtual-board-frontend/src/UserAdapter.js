@@ -49,7 +49,18 @@ class UserAdapter {
     .then(userObj => {
       let updatedUser = new User(userObj.id, userObj.name, userObj.age, userObj.bio);
       updatedUser.renderProfile();
+    });
+  };
+
+  static deleteUser(id) {
+    fetch('http://localhost:3000/users/' + id, {
+      method: "DELETE"
     })
-  }
+    .then(res => res.json())
+    .then(() => {
+      sideBar.content.innerHTML = '';
+      sideBar = new SideBar();
+    });
+  };
 
 }
