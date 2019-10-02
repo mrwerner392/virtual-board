@@ -9,6 +9,7 @@ class Canvas {
   render() {
     const canvas = document.createElement('canvas')
     canvas.id = 'doodle-canvas'
+    // canvas.width = canvas.height * canvas.clientWidth / canvas.clientHeight
     const context = canvas.getContext('2d')
 
     let mousedown = false
@@ -17,6 +18,7 @@ class Canvas {
 
         let x = e.offsetX
         let y = e.offsetY
+        console.log(e);
         DoodleDot.drawDot(context,x,y)
 
         fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}/doodle_dots`, {

@@ -60,7 +60,6 @@ class User {
   }
 
   makePTag() {
-    // const sideBar = document.querySelector('#side-bar');
     let pTag = document.createElement('p');
     pTag.innerText = this.name;
 
@@ -69,7 +68,6 @@ class User {
       this.renderWhiteboard()
 
     })
-    // sideBar.append(pTag)
     return pTag
   }
 
