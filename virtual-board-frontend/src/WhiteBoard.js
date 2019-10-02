@@ -1,12 +1,12 @@
 class WhiteBoard {
 
-    constructor(id, title, toDos, quotes, thoughts, doodleDots, userId) {
+    constructor(id, title, toDos, quotes, thoughts, doodle, userId) {
         this.id = id
         this.title =  title
         this.toDos = toDos
         this.quotes = quotes
         this.thoughts = thoughts
-        this.doodleDots = doodleDots
+        this.doodle = doodle
         this.userId = userId
     }
 
@@ -160,7 +160,7 @@ class WhiteBoard {
       // render new canvas object
     renderCanvas() {
       const doodleDiv = document.querySelector('#doodles')
-      let canvas = new Canvas(this.doodleDots, this.id, this.userId)
+      let canvas = new Canvas(this.doodle, this.id, this.userId)
       doodleDiv.append(...canvas.render())
 
 

@@ -5,7 +5,7 @@ class DoodlesController < ApplicationController
     doodle.destroy
     user = User.find(params[:user_id])
     user.whiteboard.doodle = Doodle.create
-    render json: user
+    render json: user, include: '**'
   end
 
 end

@@ -51,7 +51,7 @@ class User {
   }
 
   renderWhiteboard() {
-    let whiteboard = new WhiteBoard(this.whiteboard.id, this.whiteboard.title, this.whiteboard.to_dos, this.whiteboard.quotes, this.whiteboard.thoughts, this.whiteboard.doodle_dots, this.id)
+    let whiteboard = new WhiteBoard(this.whiteboard.id, this.whiteboard.title, this.whiteboard.to_dos, this.whiteboard.quotes, this.whiteboard.thoughts, this.whiteboard.doodle, this.id)
     whiteboard.renderTitle()
     whiteboard.renderToDos()
     whiteboard.renderQuotes()
