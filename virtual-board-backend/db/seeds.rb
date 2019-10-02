@@ -25,6 +25,10 @@ kenny.whiteboard.quotes << Quote.create(content: '"I am a great eater of beef, a
 matt.whiteboard.quotes << Quote.create(content: '"That checks out" -Me')
 matt.whiteboard.quotes << Quote.create(content: '"Take a shower" -Eric')
 
+
+kenny.whiteboard.doodle = Doodle.create
+matt.whiteboard.doodle = Doodle.create
+
 kenny.whiteboard.thoughts << Thought.create(content: "what is this?")
 kenny.whiteboard.thoughts << Thought.create(content: "why is javaScript?")
 matt.whiteboard.thoughts << Thought.create(content: "Time is a flat circle.")

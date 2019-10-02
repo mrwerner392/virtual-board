@@ -1,3 +1,3 @@
 class DoodleDot < ApplicationRecord
-  belongs_to :whiteboard
+  belongs_to :doodle
 end

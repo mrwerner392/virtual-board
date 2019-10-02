@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       resources :to_dos
       resources :quotes
       resources :thoughts
-      resources :doodle_dots
+      resources :doodles do
+        resources :doodle_dots
+      end
     end
   end
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
