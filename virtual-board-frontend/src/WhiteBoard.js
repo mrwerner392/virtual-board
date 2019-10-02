@@ -1,11 +1,12 @@
 class WhiteBoard {
 
-    constructor(id, title, toDos, quotes, thoughts, userId) {
+    constructor(id, title, toDos, quotes, thoughts, /*doodleDots,*/ userId) {
         this.id = id
         this.title =  title
         this.toDos = toDos
         this.quotes = quotes
         this.thoughts = thoughts
+        // this.doodleDots = doodleDots
         this.userId = userId
     }
 
@@ -153,5 +154,15 @@ class WhiteBoard {
       })
 
     }
+
+    // // Render doodle
+    // renderDoodle() {
+    //   // Clear the canvas
+    //   context.clearRect(0, 0, canvas.width, canvas.height)
+    //   this.doodleDots.forEach(dotObj => {
+    //     let doodleDot = new DoodleDot(dotObj.x_coord, dotObj.y_coord)
+    //     doodleDot.render()
+    //   })
+    // }
 
 }
