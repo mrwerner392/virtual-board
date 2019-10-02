@@ -60,16 +60,23 @@ class Canvas {
         mousedown = false
     })
 
-    // console.log(this);
-    // console.log(this.doodleDots);
-
-    this.doodleDots.forEach(dotObj => {
-        // let doodleDot = new DoodleDot(dotObj.x_coord, dotObj.y_coord)
-        // debugger;
-        DoodleDot.drawDot(context, dotObj.x_coord, dotObj.y_coord)
+    this.doodleDots.forEach((dotObj, index) => {
+        setTimeout(() => DoodleDot.drawDot(context, dotObj.x_coord, dotObj.y_coord), index * 10)
     })
 
-    return canvas
+    const clearCanvas = document.createElement('button')
+    clearCanvas.innerText = 'Erase Art'
+    clearCanvas.addEventListener('click', () => {
+      context.clearRect(0, 0, canvas.width, canvas.height)
+      this.doodleDots.forEach(doodleDot => {
+        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/doodle_dots/${doodleDot.id}`, {
+          method: 'DELETE'
+        })
+      })
+    })
+
+
+    return [canvas, clearCanvas]
   }
 
 

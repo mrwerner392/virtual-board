@@ -161,7 +161,9 @@ class WhiteBoard {
     renderCanvas() {
       const doodleDiv = document.querySelector('#doodles')
       let canvas = new Canvas(this.doodleDots, this.id, this.userId)
-      doodleDiv.append(canvas.render())
+      doodleDiv.append(...canvas.render())
+
+
     }
 
     // // Render doodle
