@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_131557) do
+ActiveRecord::Schema.define(version: 2019_10_02_154728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 2019_10_02_131557) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["whiteboard_id"], name: "index_quotes_on_whiteboard_id"
+  end
+
+  create_table "thoughts", force: :cascade do |t|
+    t.string "content"
+    t.bigint "whiteboard_id", null: false
+    t.index ["whiteboard_id"], name: "index_thoughts_on_whiteboard_id"
   end
 
   create_table "to_dos", force: :cascade do |t|
@@ -48,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_131557) do
   end
 
   add_foreign_key "quotes", "whiteboards"
+  add_foreign_key "thoughts", "whiteboards"
   add_foreign_key "to_dos", "whiteboards"
   add_foreign_key "whiteboards", "users"
 end
