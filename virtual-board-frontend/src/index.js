@@ -23,7 +23,13 @@ canvas.addEventListener('mousemove', (e) => {
     }
 })
 
-canvas.addEventListener('mouseup', () => {
+canvas.addEventListener('mouseup', (e) => {
+    // console.log('mouse was lifted' e)
+    mousedown = false
+})
+
+canvas.addEventListener('mouseleave', (e) => {
+    // console.log('mouse was lifted' e)
     mousedown = false
 })
 
