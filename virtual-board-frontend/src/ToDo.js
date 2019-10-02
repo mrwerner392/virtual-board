@@ -1,13 +1,13 @@
 class ToDo{
 
-    constructor(content, id, whiteboardId, userId){
+    constructor(content, id, whiteboardId, userId) {
         this.content = content
         this.id = id
         this.whiteboardId = whiteboardId
         this.userId = userId
     }
 
-    render(){
+    render() {
         let toDoLi = document.createElement('li')
         toDoLi.innerText = this.content
 
@@ -25,6 +25,5 @@ class ToDo{
 
         return toDoLi;
     }
-
 
 }

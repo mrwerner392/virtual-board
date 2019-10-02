@@ -1,22 +1,25 @@
 class WhiteBoard {
 
-    constructor(id, title, toDos, userId){
+    constructor(id, title, toDos, quotes, userId) {
         this.id = id
         this.title =  title
         this.toDos = toDos
+        this.quotes = quotes
         this.userId = userId
     }
 
     // render title
-    renderTitle(){
+    renderTitle() {
         const wbTitle = document.querySelector('#wb-title')
         const title = document.createElement('h3')
         title.innerText = this.title
         wbTitle.append(title)
     }
 
-    //render todos
-    renderToDos(){
+    // Render to-dos
+    renderToDos() {
+
+        // Render individual to-dos
         const toDoList = document.querySelector('#to-do-list')
         toDoList.innerHTML = '';
         this.toDos.forEach(toDoObj => {
@@ -24,6 +27,7 @@ class WhiteBoard {
             toDoList.append(toDo.render())
         })
 
+        // Render new to-do form
         let toDoForm = document.createElement('form')
         let content = document.createElement('input')
         content.type = 'text'
@@ -58,6 +62,49 @@ class WhiteBoard {
 
     }
 
+    // Render quotes
+    renderQuotes() {
 
+      // Render individual quotes
+      const quoteList = document.querySelector('#quote-list')
+      quoteList.innerHTML = '';
+      this.quotes.forEach(quoteObj => {
+          let quote = new Quote(quoteObj.content, quoteObj.id, this.id, this.userId)
+          quoteList.append(quote.render())
+      })
 
+      // Render new quote form
+      let quoteForm = document.createElement('form')
+      let content = document.createElement('input')
+      content.type = 'text'
+      content.name = 'content'
+      let submit = document.createElement('input')
+      submit.type = 'submit'
+      submit.style.display = 'none'
+      quoteForm.append(content, submit)
+      quoteList.append(quoteForm)
+
+      quoteForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        let content = e.target.content.value
+        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/quotes`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            content: content
+          })
+        })
+        .then(res => res.json())
+        .then(quoteObj => {
+          let quote = new ToDo(quoteObj.content, quoteObj.id)
+          quoteList.insertBefore(quote.render(), quoteForm)
+          quoteForm.reset()
+        })
+      })
+
+    }
 }
