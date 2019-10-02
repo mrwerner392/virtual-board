@@ -5,12 +5,12 @@ class ThoughtsController < ApplicationController
         if thought.save
           render json: thought
         end
-      end
-    
-      def destroy
-        thought = Thought.find(params[:id])
-        thought.destroy
-        render json: {}
-      end
+    end
+
+    def destroy
+      thought = Thought.find(params[:id])
+      thought.destroy
+      render json: {}
+    end
 
 end

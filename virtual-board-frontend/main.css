@@ -58,11 +58,13 @@
 #to-dos {
     grid-area: to-dos;
     background-color: lightblue;
+    font-family: 'Permanent Marker', cursive;
 }
 
 #quotes {
     grid-area: quotes;
     background-color: magenta;
+    font-family: 'Permanent Marker', cursive;
 }
 
 #doodles {
@@ -73,6 +75,7 @@
 #krazy-thoughts {
     grid-area: krazy-thoughts;
     background-color: lime;
+    font-family: 'Permanent Marker', cursive;
 }
 
 
@@ -82,3 +85,6 @@
     border-style: solid;
     border-width: 1px;
 }
+ .list {
+   list-style: none;
+ }

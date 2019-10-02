@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_154728) do
+ActiveRecord::Schema.define(version: 2019_10_02_231315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doodle_dots", force: :cascade do |t|
+    t.integer "x_coord"
+    t.integer "y_coord"
+    t.bigint "doodle_id", null: false
+    t.index ["doodle_id"], name: "index_doodle_dots_on_doodle_id"
+  end
+
+  create_table "doodles", force: :cascade do |t|
+    t.bigint "whiteboard_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["whiteboard_id"], name: "index_doodles_on_whiteboard_id"
+  end
 
   create_table "quotes", force: :cascade do |t|
     t.string "content"
@@ -53,6 +67,8 @@ ActiveRecord::Schema.define(version: 2019_10_02_154728) do
     t.index ["user_id"], name: "index_whiteboards_on_user_id"
   end
 
+  add_foreign_key "doodle_dots", "doodles"
+  add_foreign_key "doodles", "whiteboards"
   add_foreign_key "quotes", "whiteboards"
   add_foreign_key "thoughts", "whiteboards"
   add_foreign_key "to_dos", "whiteboards"

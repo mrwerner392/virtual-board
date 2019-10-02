@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     user = User.new(name: params[:name], age: params[:age], bio: params[:bio])
     if user.save
       user.whiteboard = Whiteboard.create(title: "#{user.name}'s WhiteBoard")
+      user.whiteboard.doodle = Doodle.create
       render json: user,  include: '**'
     end
   end
@@ -30,5 +31,5 @@ class UsersController < ApplicationController
     user.destroy
     render json: {}
   end
-  
+
 end
