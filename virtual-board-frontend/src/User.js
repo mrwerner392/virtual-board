@@ -56,7 +56,7 @@ class User {
     whiteboard.renderToDos()
     whiteboard.renderQuotes()
     whiteboard.renderThoughts()
-    // whiteboard.renderDoodle()
+    whiteboard.renderCanvas()
   }
 
   makePTag() {

@@ -155,12 +155,24 @@ class WhiteBoard {
 
     }
 
+    // render canvas
+      // clear html of doodle div
+      // render new canvas object
+
+    renderCanvas() {
+      const doodleDiv = document.querySelector('#doodles')
+      let canvas = new Canvas(this.id, this.userId)
+      doodleDiv.append(canvas.render())
+      console.log(canvas);
+      console.log(canvas.context);
+    }
+
     // // Render doodle
     // renderDoodle() {
     //   // Clear the canvas
     //   context.clearRect(0, 0, canvas.width, canvas.height)
     //   this.doodleDots.forEach(dotObj => {
-    //     let doodleDot = new DoodleDot(dotObj.x_coord, dotObj.y_coord)
+    //     let doodleDot = new DoodleDot(dotObj.x_coord, dotObj.y_coord, this.id, this.userId)
     //     doodleDot.render()
     //   })
     // }
