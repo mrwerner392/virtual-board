@@ -1,10 +1,11 @@
 class WhiteBoard {
 
-    constructor(id, title, toDos, quotes, userId) {
+    constructor(id, title, toDos, quotes, thoughts, userId) {
         this.id = id
         this.title =  title
         this.toDos = toDos
         this.quotes = quotes
+        this.thoughts = thoughts
         this.userId = userId
     }
 
@@ -107,4 +108,50 @@ class WhiteBoard {
       })
 
     }
+
+    // Render thoughts
+    renderThoughts() {
+      // Render individual thoughts
+      const thoughtList = document.querySelector('#krazy-thought-list')
+      thoughtList.innerHTML = '';
+      this.thoughts.forEach(thoughtObj => {
+          let thought = new Thought(thoughtObj.content, thoughtObj.id, this.id, this.userId)
+          thoughtList.append(thought.render())
+      })
+
+       // Render new thought form
+       let thoughtForm = document.createElement('form')
+       let content = document.createElement('input')
+       content.type = 'text'
+       content.name = 'content'
+       let submit = document.createElement('input')
+       submit.type = 'submit'
+       submit.style.display = 'none'
+       thoughtForm.append(content, submit)
+       thoughtList.append(thoughtForm)
+
+       thoughtForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        let content = e.target.content.value
+        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            content: content
+          })
+        })
+        .then(res => res.json())
+        .then(thoughtObj => {
+          let thought = new Thought(thoughtObj.content, thoughtObj.id)
+          thoughtList.insertBefore(thought.render(), thoughtForm)
+          thoughtForm.reset()
+        })
+      })
+
+    }
+
 }

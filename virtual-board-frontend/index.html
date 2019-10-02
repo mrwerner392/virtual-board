@@ -5,6 +5,7 @@
         <title>Virtual Board</title>
         <script defer type='text/javascript' src='src/WhiteBoard.js'></script>
         <script defer type='text/javascript' src='src/ToDo.js'></script>
+        <script defer type='text/javascript' src='src/Thought.js'></script>
         <script defer type='text/javascript' src='src/Quote.js'></script>
         <script defer type='text/javascript' src='src/User.js'></script>
         <script defer type='text/javascript' src='src/UserForm.js'></script>
@@ -26,7 +27,9 @@
                     <div id='quotes' class="wb-section" >
                         <ul id='quote-list'></ul>
                     </div>
-                    <div id='doodles' class="wb-section" ></div>
+                    <div id='doodles' class="wb-section" >
+                        <canvas id="doodle-canvas"></canvas>
+                    </div>
                     <div id='krazy-thoughts'class="wb-section" >
                         <ul id='krazy-thought-list'></ul>
                     </div>
