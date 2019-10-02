@@ -1,6 +1,6 @@
 class WhiteBoard {
 
-    constructor(id, title, toDos, userId){
+    constructor(id, title, toDos, userId) {
         this.id = id
         this.title =  title
         this.toDos = toDos
@@ -8,7 +8,7 @@ class WhiteBoard {
     }
 
     // render title
-    renderTitle(){
+    renderTitle() {
         const wbTitle = document.querySelector('#wb-title')
         const title = document.createElement('h3')
         title.innerText = this.title
@@ -16,7 +16,7 @@ class WhiteBoard {
     }
 
     //render todos
-    renderToDos(){
+    renderToDos() {
         const toDoList = document.querySelector('#to-do-list')
         toDoList.innerHTML = '';
         this.toDos.forEach(toDoObj => {

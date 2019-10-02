@@ -20,3 +20,7 @@ kenny.whiteboard.to_dos << ToDo.create(content: "game")
 matt.whiteboard.to_dos << ToDo.create(content: "sleep")
 matt.whiteboard.to_dos << ToDo.create(content: "drink bud light")
 
+kenny.whiteboard.quotes << Quote.create(content: '"Forgiveness is divine, but never pay full price for late pizza" -Michaelangelo')
+kenny.whiteboard.quotes << Quote.create(content: '"I am a great eater of beef, and I belief it does harm to my wit" -Shakespeare')
+matt.whiteboard.quotes << Quote.create(content: '"That checks out" -Me')
+matt.whiteboard.quotes << Quote.create(content: '"Take a shower" -Eric')

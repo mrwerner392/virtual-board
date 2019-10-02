@@ -54,9 +54,7 @@ class User {
     let whiteboard = new WhiteBoard(this.whiteboard.id, this.whiteboard.title, this.whiteboard.to_dos, this.id)
     whiteboard.renderTitle()
     whiteboard.renderToDos()
-    // const wbTitle = document.querySelector('#wb-title')
-    // // eventually will target white board conatiner and other elements
-    // wbTitle.innerText = this.whiteboard.title
+    
   }
 
   makePTag() {
