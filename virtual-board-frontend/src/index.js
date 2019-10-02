@@ -2,21 +2,24 @@ let sideBar = new SideBar();
 
 let mousedown = false
 const canvas = document.querySelector('#doodle-canvas')
+// canvas.width = canvas.height * canvas.clientWidth / canvas.clientHeight
 const context = canvas.getContext('2d')
 
 canvas.addEventListener('mousedown', function (e) {
     // debugger
-    // mousedown = true
-    let x = e.pageX - this.offsetLeft
-    let y = e.pageY - this.offsetTop
-    console.log(this)
-    console.log(x , y )
-    drawDot( x , y, 20)
+    mousedown = true
+    let x = e.offsetX
+    let y = e.offsetY
+    // console.log(x,y)
+    drawDot(x,y)
 })
 
-canvas.addEventListener('mousemove', () => {
+canvas.addEventListener('mousemove', (e) => {
     if (mousedown === true){
-        drawDot()
+        let x = e.offsetX
+        let y = e.offsetY
+        console.log(x,y)
+        drawDot(x,y)
     }
 })
 
@@ -27,7 +30,7 @@ canvas.addEventListener('mouseup', () => {
 function drawDot(x, y, radius=5) {
     context.fillStyle = 'red'
     context.beginPath()
-    context.arc( x , y , radius, 0 , 2 * Math.PI)
+    context.arc(x , y , radius, 0 , 2 * Math.PI)
     context.closePath()
     context.fill()
 }
