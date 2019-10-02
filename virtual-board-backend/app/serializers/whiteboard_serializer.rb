@@ -3,4 +3,5 @@ class WhiteboardSerializer < ActiveModel::Serializer
   has_many :to_dos
   has_many :quotes
   has_many :thoughts
+  has_many :doodle_dots
 end
