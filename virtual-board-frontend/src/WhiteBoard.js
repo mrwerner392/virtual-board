@@ -35,6 +35,7 @@ class WhiteBoard {
         let content = document.createElement('input')
         content.type = 'text'
         content.name = 'content'
+        content.placeholder = 'What do you need to do...'
         let submit = document.createElement('input')
         submit.type = 'submit'
         submit.style.display = 'none'
@@ -82,6 +83,7 @@ class WhiteBoard {
       let content = document.createElement('input')
       content.type = 'text'
       content.name = 'content'
+      content.placeholder = 'What quotes inspire you...'
       let submit = document.createElement('input')
       submit.type = 'submit'
       submit.style.display = 'none'
@@ -128,6 +130,7 @@ class WhiteBoard {
        let content = document.createElement('input')
        content.type = 'text'
        content.name = 'content'
+       content.placeholder = 'What are you thinking about...'
        let submit = document.createElement('input')
        submit.type = 'submit'
        submit.style.display = 'none'

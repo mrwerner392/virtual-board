@@ -1,3 +1,8 @@
+
+li {
+  font-size: 15px;
+}
+
 #content-wrapper {
     height: 100vh;
     width: 100vw;
@@ -9,10 +14,6 @@
         'side-bar wb-container';
 }
 
-/* #nav-bar {
-    grid-area: nav-bar;
-    background-color: pink;
-} */
 
 #side-bar {
     grid-area: side-bar;
@@ -25,7 +26,7 @@
     grid-area: wb-container;
     display: grid;
     grid-template-columns: 5% 90% 5%;
-    grid-template-rows: 5% 90% 5%;
+    grid-template-rows: 10% 80% 10%;
     grid-template-areas:
         '. wb-title .'
         '. white-board .'
@@ -57,24 +58,20 @@
 
 #to-dos {
     grid-area: to-dos;
-    background-color: lightblue;
     font-family: 'Permanent Marker', cursive;
 }
 
 #quotes {
     grid-area: quotes;
-    background-color: magenta;
     font-family: 'Permanent Marker', cursive;
 }
 
 #doodles {
     grid-area: doodles;
-    background-color: pink;
 }
 
 #krazy-thoughts {
     grid-area: krazy-thoughts;
-    background-color: lime;
     font-family: 'Permanent Marker', cursive;
 }
 
@@ -89,13 +86,18 @@
    list-style: none;
  }
 
-input {
+.wb-form input {
   font-family: 'Permanent Marker', cursive;
-  font-size: 20px;
+  font-size: 15px;
+  border-style: none;
+  min-width: 80%;
+  /* box-shadow: 0 2px 0 black; */
 }
 
-li {
-  font-size: 20px;
+.wb-section {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
 }
 
 /* .wb-form {
