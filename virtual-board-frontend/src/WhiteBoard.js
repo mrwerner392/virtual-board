@@ -106,20 +106,23 @@ class WhiteBoard {
             toDoForm.reset()
           })
         })
+        
+      }
 
-    }
-
-    // Render quotes
-    renderQuotes() {
-
+      // Render quotes
+      renderQuotes() {
+        
       // Render individual quotes
       const quoteList = document.querySelector('#quote-list')
       quoteList.innerHTML = '';
+      const quoteDiv = document.querySelector('#quotes')
       this.quotes.forEach(quoteObj => {
-          let quote = new Quote(quoteObj.content, quoteObj.id, this.id, this.userId)
+        let quote = new Quote(quoteObj.content, quoteObj.id, this.id, this.userId)
           quoteList.append(quote.render())
+        })
+      quoteDiv.addEventListener('click', (e) => {
+        this.editMode(quoteDiv)
       })
-
       // Render new quote form
       let quoteForm = document.createElement('form')
       quoteForm.classList.add('wb-form')
@@ -132,7 +135,7 @@ class WhiteBoard {
       submit.style.display = 'none'
       quoteForm.append(content, submit)
       quoteList.append(quoteForm)
-
+      
       quoteForm.addEventListener('submit', e => {
         e.preventDefault();
 
@@ -154,20 +157,24 @@ class WhiteBoard {
           quoteForm.reset()
         })
       })
-
+      
     }
-
+    
     // Render thoughts
     renderThoughts() {
       // Render individual thoughts
       const thoughtList = document.querySelector('#krazy-thought-list')
       thoughtList.innerHTML = '';
+      const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
       this.thoughts.forEach(thoughtObj => {
-          let thought = new Thought(thoughtObj.content, thoughtObj.id, this.id, this.userId)
-          thoughtList.append(thought.render())
+        let thought = new Thought(thoughtObj.content, thoughtObj.id, this.id, this.userId)
+        thoughtList.append(thought.render())
+      })
+      krazyThoughtDiv.addEventListener('click', (e) => {
+        this.editMode(krazyThoughtDiv)
       })
 
-       // Render new thought form
+      // Render new thought form
        let thoughtForm = document.createElement('form')
        thoughtForm.classList.add('wb-form')
        let content = document.createElement('input')
@@ -181,11 +188,11 @@ class WhiteBoard {
        thoughtList.append(thoughtForm)
 
        thoughtForm.addEventListener('submit', e => {
-        e.preventDefault();
+         e.preventDefault();
 
-        let content = e.target.content.value
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
-          method: 'POST',
+         let content = e.target.content.value
+         fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
+           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json'
@@ -201,28 +208,28 @@ class WhiteBoard {
           thoughtForm.reset()
         })
       })
-
+      
     }
-
+    
     renderCanvas() {
       const doodleDiv = document.querySelector('#doodles')
+      doodleDiv.addEventListener('click', (e) => {
+        this.editMode(doodleDiv)
+      })
+
       let canvas = new Canvas(this.doodle, this.id, this.userId)
       doodleDiv.append(...canvas.render())
     }
-
+    
     editMode(div) {
       console.log(div)
       const whiteBoardHTML = document.querySelector("#white-board")
-      // const toDoDiv = document.querySelector('#to-dos')
-      // const quoteDiv = document.querySelector('#quotes')
-      // const doodleDiv = document.querySelector('#doodles')
-      // const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
       whiteBoardHTML.style.gridTemplateColumns = '100%'
       whiteBoardHTML.style.gridTemplateRows = '100%'
-      whiteBoardHTML.style.gridTempateAreas = `"${div.id}"`
+      whiteBoardHTML.style.gridTemplateAreas = `"${div.id}"`
       
       div.style.borderRadius = '30px'
-
+      
       let hiddenDivs = document.querySelectorAll(`.wb-section:not([id="${div.id}"`)
       console.log(hiddenDivs)
 
