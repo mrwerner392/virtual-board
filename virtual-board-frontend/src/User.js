@@ -12,42 +12,69 @@ class User {
     sideBar.content.innerHTML = '';
 
     // Labels and values for name, age, bio
-    let nameLabel = document.createElement('h2');
+    let nameLabel = document.createElement('h1');
     nameLabel.innerText = 'Name';
+    nameLabel.style.paddingTop = '20%'
 
-    let nameValue = document.createElement('h4');
+    let nameValue = document.createElement('h2');
     nameValue.innerText = this.name;
+    nameValue.style.padding = '10%'
 
-    let ageLabel = document.createElement('h2');
+    let ageLabel = document.createElement('h1');
     ageLabel.innerText = 'Age';
 
-    let ageValue = document.createElement('h4');
+    let ageValue = document.createElement('h2');
     ageValue.innerText = this.age;
+    ageValue.style.padding = '10%'
 
-    let bioLabel = document.createElement('h2');
+    let bioLabel = document.createElement('h1');
     bioLabel.innerText = 'Bio';
 
-    let bioValue = document.createElement('h4');
+    let bioValue = document.createElement('h2');
     bioValue.innerText = this.bio;
+    bioValue.style.padding = '10%'
 
     sideBar.content.append(nameLabel, nameValue, ageLabel, ageValue, bioLabel, bioValue);
 
     let updateUserButton = document.createElement('button');
     updateUserButton.innerText = 'Update Profile';
+    updateUserButton.classList.add('user-action');
     updateUserButton.addEventListener('click', () => {
-      let updateUserForm = new UserForm(UserAdapter.updateUser, this);
       sideBar.content.innerHTML = '';
+      let updateHeader = document.createElement('h1')
+      updateHeader.innerText = 'Edit Info'
+      updateHeader.style.margin = '10% 0 10% 0'
+      sideBar.content.append(updateHeader)
+      let updateUserForm = new UserForm(UserAdapter.updateUser, this);
       sideBar.content.append(updateUserForm.form);
     })
     sideBar.content.append(updateUserButton)
 
     let deleteUserButton = document.createElement('button');
     deleteUserButton.innerText = 'Delete Profile';
+    deleteUserButton.classList.add('user-action');
     deleteUserButton.addEventListener('click', () => {
       UserAdapter.deleteUser(this.id);
     });
     sideBar.content.append(deleteUserButton);
 
+    let signOutButton = document.createElement('button');
+    signOutButton.innerText = 'Sign Out';
+    signOutButton.classList.add('user-action');
+    signOutButton.addEventListener('click', () => {
+      sideBar = new SideBar()
+      // reset main container
+      document.querySelector('#to-do-list').innerHTML = ''
+      document.querySelector('#quote-list').innerHTML = ''
+      document.querySelector('#doodles').innerHTML = ''
+      document.querySelector('#krazy-thought-list').innerHTML = ''
+      document.querySelector('#wb-title').innerHTML = ''
+    });
+    sideBar.content.append(signOutButton);
+
+    document.querySelector('#markers').style.opacity = '1';
+
+    this.renderWhiteboard()
   }
 
   renderWhiteboard() {
@@ -65,7 +92,7 @@ class User {
 
     pTag.addEventListener('click', () => {
       this.renderProfile()
-      this.renderWhiteboard()
+      // this.renderWhiteboard()
 
     })
     return pTag

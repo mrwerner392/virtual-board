@@ -13,8 +13,48 @@ class WhiteBoard {
     // render title
     renderTitle() {
         const wbTitle = document.querySelector('#wb-title')
-        const title = document.createElement('h3')
+        wbTitle.innerHTML = ''
+        const title = document.createElement('h2')
+        title.id = 'title'
+        // title.style.display = 'inline'
         title.innerText = this.title
+        // const updateTitle = document.createElement('button')
+        // updateTitle.innerText = 'Change Whiteboard Name'
+        // updateTitle.style.display = 'inline'
+        // updateTitle.style.float = 'right'
+        // updateTitle.style.marginTop = '1%';
+        title.addEventListener('click', () => {
+          wbTitle.innerHTML = ''
+          let titleForm = document.createElement('form');
+          let titleInput = document.createElement('input');
+          titleInput.id = 'new-title-input'
+          titleInput.value = this.title;
+          titleInput.name = 'title'
+          let titleSubmit = document.createElement('input')
+          titleSubmit.type = 'submit'
+          titleSubmit.style.display = 'none'
+          titleForm.append(titleInput, titleSubmit)
+          titleForm.addEventListener('submit', e => {
+            e.preventDefault()
+            let newTitle = titleInput.value
+            fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}`, {
+              method: "PATCH",
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+              },
+              body: JSON.stringify({
+                'title': newTitle
+              })
+            })
+            .then(res => res.json())
+            .then(wbObj => {
+              this.title = wbObj.title
+              this.renderTitle();
+            })
+          })
+          wbTitle.append(titleForm)
+        })
         wbTitle.append(title)
     }
 
@@ -35,6 +75,7 @@ class WhiteBoard {
         let content = document.createElement('input')
         content.type = 'text'
         content.name = 'content'
+        content.placeholder = 'What do you need to do...'
         let submit = document.createElement('input')
         submit.type = 'submit'
         submit.style.display = 'none'
@@ -82,6 +123,7 @@ class WhiteBoard {
       let content = document.createElement('input')
       content.type = 'text'
       content.name = 'content'
+      content.placeholder = 'What quotes inspire you...'
       let submit = document.createElement('input')
       submit.type = 'submit'
       submit.style.display = 'none'
@@ -128,6 +170,7 @@ class WhiteBoard {
        let content = document.createElement('input')
        content.type = 'text'
        content.name = 'content'
+       content.placeholder = 'What are you thinking about...'
        let submit = document.createElement('input')
        submit.type = 'submit'
        submit.style.display = 'none'

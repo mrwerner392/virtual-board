@@ -9,7 +9,9 @@ class Canvas {
   render() {
     const canvas = document.createElement('canvas')
     canvas.id = 'doodle-canvas'
+    // canvas.width = canvas.clientWidth;
     // canvas.width = canvas.height * canvas.clientWidth / canvas.clientHeight
+    // debugger;
     const context = canvas.getContext('2d')
 
     let mousedown = false

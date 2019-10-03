@@ -1,23 +1,64 @@
+body {
+  font-family: 'Permanent Marker', cursive;
+}
+
+li {
+  font-size: 15px;
+}
+
+label {
+  font-size: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+h3 {
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+}
+
+button {
+  font-family: 'Permanent Marker', cursive;
+  border-radius: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 #content-wrapper {
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-columns: 15% 85%;
-    /* grid-template-rows: 10% 90%; */
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 10% 90%;
     grid-template-areas:
-        /* 'nav-bar nav-bar' */
+        'side-bar nav-bar'
         'side-bar wb-container';
+    background-color: #ededed;
 }
 
-/* #nav-bar {
-    grid-area: nav-bar;
-    background-color: pink;
-} */
+#nav-bar {
+  grid-area: nav-bar;
+  background-color: #6e9cff;
+}
 
 #side-bar {
     grid-area: side-bar;
-    background-color: lime;
+    /* background-color: lime; */
     text-align: center;
+    background-image: url('./images/cork-background2.jpg');
+    border-style: ridge;
+    border-color: brown;
+    border-width: 5px;
+    box-shadow: 5px 0 5px;
 }
 
 /* grid for wb-container*/
@@ -25,7 +66,7 @@
     grid-area: wb-container;
     display: grid;
     grid-template-columns: 5% 90% 5%;
-    grid-template-rows: 5% 90% 5%;
+    grid-template-rows: 10% 80% 10%;
     grid-template-areas:
         '. wb-title .'
         '. white-board .'
@@ -35,12 +76,14 @@
 
 #wb-title {
     grid-area: wb-title;
-    background-color: yellow;
+    text-align: center;
+    margin-top: 1%;
+    /* background-color: yellow; */
 }
 
 #markers {
     grid-area: markers;
-    background-color: orange;
+    /* background-color: orange; */
 }
 
 /* grid for white-board */
@@ -51,31 +94,34 @@
     grid-template-rows: 50% 50%;
     grid-template-areas:
         'to-dos quotes'
-        'doodles krazy-thoughts'
-
+        'doodles krazy-thoughts';
+    box-shadow:  0 0 10px rgba(0,0,0,0.6);
+    border-radius: 30px;
+    /* border-style: solid;
+    border-width: 1px; */
 }
 
 #to-dos {
     grid-area: to-dos;
-    background-color: lightblue;
     font-family: 'Permanent Marker', cursive;
+    border-radius: 30px 0 0 0;
 }
 
 #quotes {
     grid-area: quotes;
-    background-color: magenta;
     font-family: 'Permanent Marker', cursive;
+    border-radius: 0 30px 0 0;
 }
 
 #doodles {
     grid-area: doodles;
-    background-color: pink;
+    border-radius: 0 0 0 30px;
 }
 
 #krazy-thoughts {
     grid-area: krazy-thoughts;
-    background-color: lime;
     font-family: 'Permanent Marker', cursive;
+    border-radius: 0 0 30px 0;
 }
 
 
@@ -85,18 +131,99 @@
     border-style: solid;
     border-width: 1px;
 }
+
+#user-form {
+  padding-top: 10%;
+  padding-bottom: 10%;
+  /* background-image: url('./images/blue-post-it.png'); */
+}
+
+.user-form input, button {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 15px;
+}
+
+#all-users {
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+#red {
+  color: red;
+}
+
+#blue {
+  color: blue;
+}
+
+#lime {
+  color: lime;
+}
+
+#purple {
+  color: purple;
+}
+
+#black {
+  color: black;
+}
+
+#new-title-input {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.5em;
+  min-width: 75%
+}
+
+#title:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
  .list {
    list-style: none;
  }
 
-input {
+.wb-form input {
   font-family: 'Permanent Marker', cursive;
-  font-size: 20px;
+  font-size: 15px;
+  border-style: none;
+  min-width: 80%;
+  /* box-shadow: 0 2px 0 black; */
 }
 
-li {
-  font-size: 20px;
+.wb-section {
+  background-color: white;
+  /* border-style: solid;
+  border-width: 1px; */
 }
+
+.user-action {
+  font-size: 15px;
+}
+
+.marker {
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+}
+
+.marker:focus {
+    outline: none;
+}
+
+p:hover {
+  cursor: pointer;
+  transform: scale(1.4)
+}
+
+.marker:hover {
+  cursor: pointer;
+  transform: scale(1.8)
+}
+
 
 /* .wb-form {
   opacity: 0;
