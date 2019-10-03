@@ -15,14 +15,15 @@ class WhiteBoard {
         const wbTitle = document.querySelector('#wb-title')
         wbTitle.innerHTML = ''
         const title = document.createElement('h2')
-        title.style.display = 'inline'
+        title.id = 'title'
+        // title.style.display = 'inline'
         title.innerText = this.title
-        const updateTitle = document.createElement('button')
-        updateTitle.innerText = 'Change Whiteboard Name'
-        updateTitle.style.display = 'inline'
-        updateTitle.style.float = 'right'
-        updateTitle.style.marginTop = '1%';
-        updateTitle.addEventListener('click', () => {
+        // const updateTitle = document.createElement('button')
+        // updateTitle.innerText = 'Change Whiteboard Name'
+        // updateTitle.style.display = 'inline'
+        // updateTitle.style.float = 'right'
+        // updateTitle.style.marginTop = '1%';
+        title.addEventListener('click', () => {
           wbTitle.innerHTML = ''
           let titleForm = document.createElement('form');
           let titleInput = document.createElement('input');
@@ -54,7 +55,7 @@ class WhiteBoard {
           })
           wbTitle.append(titleForm)
         })
-        wbTitle.append(title, updateTitle)
+        wbTitle.append(title)
     }
 
     // Render to-dos

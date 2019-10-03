@@ -76,9 +76,8 @@ button:hover {
 
 #wb-title {
     grid-area: wb-title;
-    margin-top: 2%;
-    margin-left: 15%;
-    margin-right: 5%;
+    text-align: center;
+    margin-top: 1%;
     /* background-color: yellow; */
 }
 
@@ -172,7 +171,12 @@ button:hover {
 #new-title-input {
   font-family: 'Permanent Marker', cursive;
   font-size: 1.5em;
-  min-width: 75%;
+  min-width: 75%
+}
+
+#title:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
  .list {
