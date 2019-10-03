@@ -70,7 +70,7 @@ class WhiteBoard {
             toDoList.append(toDo.render())
         })
         toDoDiv.addEventListener('click', (e) => {
-          this.editMode()
+          this.editMode(toDoDiv)
         })
         // Render new to-do form
         let toDoForm = document.createElement('form')
@@ -210,22 +210,28 @@ class WhiteBoard {
       doodleDiv.append(...canvas.render())
     }
 
-    editMode() {
-      console.log(this)
+    editMode(div) {
+      console.log(div)
       const whiteBoardHTML = document.querySelector("#white-board")
-      const toDoDiv = document.querySelector('#to-dos')
-      const quoteDiv = document.querySelector('#quotes')
-      const doodleDiv = document.querySelector('#doodles')
-      const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
+      // const toDoDiv = document.querySelector('#to-dos')
+      // const quoteDiv = document.querySelector('#quotes')
+      // const doodleDiv = document.querySelector('#doodles')
+      // const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
       whiteBoardHTML.style.gridTemplateColumns = '100%'
       whiteBoardHTML.style.gridTemplateRows = '100%'
-      whiteBoardHTML.style.gridTempateAreas = "'to-dos'"
+      whiteBoardHTML.style.gridTempateAreas = `"${div.id}"`
       
-      toDoDiv.style.borderRadius = '30px'
+      div.style.borderRadius = '30px'
 
-      quoteDiv.style.display = 'none'
-      doodleDiv.style.display = 'none'
-      krazyThoughtDiv.style.display = 'none'
+      let hiddenDivs = document.querySelectorAll(`.wb-section:not([id="${div.id}"`)
+      console.log(hiddenDivs)
+
+      hiddenDivs.forEach(divToHide => {
+        divToHide.style.display = 'none'
+        console.log(divToHide)
+      })
+      // doodleDiv.style.display = 'none'
+      // krazyThoughtDiv.style.display = 'none'
 
 
 
