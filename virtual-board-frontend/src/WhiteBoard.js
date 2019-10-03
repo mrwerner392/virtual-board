@@ -63,13 +63,18 @@ class WhiteBoard {
 
         // Render individual to-dos
         const toDoList = document.querySelector('#to-do-list')
-        const toDoDiv = document.querySelector('#to-dos')
         toDoList.innerHTML = '';
         this.toDos.forEach(toDoObj => {
-            let toDo = new ToDo(toDoObj.content, toDoObj.id, this.id, this.userId)
-            toDoList.append(toDo.render())
+          let toDo = new ToDo(toDoObj.content, toDoObj.id, this.id, this.userId)
+          toDoList.append(toDo.render())
         })
-        toDoDiv.addEventListener('click', (e) => {
+        const toDoDiv = document.querySelector('#to-dos')
+        const editButton = document.createElement('button')
+        editButton.innerText = 'Edit'
+        editButton.className = "edit"
+        toDoDiv.append(editButton)
+        editButton.addEventListener('click', (e) => {
+          editButton.style.display = 'none'
           this.editMode(toDoDiv)
         })
         // Render new to-do form
@@ -115,14 +120,20 @@ class WhiteBoard {
       // Render individual quotes
       const quoteList = document.querySelector('#quote-list')
       quoteList.innerHTML = '';
-      const quoteDiv = document.querySelector('#quotes')
       this.quotes.forEach(quoteObj => {
         let quote = new Quote(quoteObj.content, quoteObj.id, this.id, this.userId)
-          quoteList.append(quote.render())
-        })
-      quoteDiv.addEventListener('click', (e) => {
+        quoteList.append(quote.render())
+      })
+      const quoteDiv = document.querySelector('#quotes')
+      const editButton = document.createElement('button')
+      editButton.innerText = 'Edit'
+      editButton.className = "edit"
+      quoteDiv.append(editButton)
+      editButton.addEventListener('click', (e) => {
+        editButton.style.display = 'none'
         this.editMode(quoteDiv)
       })
+
       // Render new quote form
       let quoteForm = document.createElement('form')
       quoteForm.classList.add('wb-form')
@@ -165,12 +176,17 @@ class WhiteBoard {
       // Render individual thoughts
       const thoughtList = document.querySelector('#krazy-thought-list')
       thoughtList.innerHTML = '';
-      const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
       this.thoughts.forEach(thoughtObj => {
         let thought = new Thought(thoughtObj.content, thoughtObj.id, this.id, this.userId)
         thoughtList.append(thought.render())
       })
-      krazyThoughtDiv.addEventListener('click', (e) => {
+      const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
+      const editButton = document.createElement('button')
+      editButton.innerText = 'Edit'
+      editButton.className = "edit"
+      krazyThoughtDiv.append(editButton)
+      editButton.addEventListener('click', (e) => {
+        editButton.style.display = 'none'
         this.editMode(krazyThoughtDiv)
       })
 
@@ -213,7 +229,12 @@ class WhiteBoard {
     
     renderCanvas() {
       const doodleDiv = document.querySelector('#doodles')
-      doodleDiv.addEventListener('click', (e) => {
+      const editButton = document.createElement('button')
+      editButton.innerText = 'Edit'
+      editButton.className = "edit"
+      doodleDiv.append(editButton)
+      editButton.addEventListener('click', (e) => {
+        editButton.style.display = 'none'
         this.editMode(doodleDiv)
       })
 
@@ -222,12 +243,11 @@ class WhiteBoard {
     }
     
     editMode(div) {
-      console.log(div)
       const whiteBoardHTML = document.querySelector("#white-board")
       whiteBoardHTML.style.gridTemplateColumns = '100%'
       whiteBoardHTML.style.gridTemplateRows = '100%'
       whiteBoardHTML.style.gridTemplateAreas = `"${div.id}"`
-      
+
       div.style.borderRadius = '30px'
       
       let hiddenDivs = document.querySelectorAll(`.wb-section:not([id="${div.id}"`)
@@ -237,16 +257,41 @@ class WhiteBoard {
         divToHide.style.display = 'none'
         console.log(divToHide)
       })
-      // doodleDiv.style.display = 'none'
-      // krazyThoughtDiv.style.display = 'none'
-
+      const closeButton = document.createElement('button')
+      closeButton.innerText = "close"
+      div.append(closeButton)
+      closeButton.addEventListener('click', () => {
+        closeButton.remove()
+        this.displayMode(div, hiddenDivs)
+      })
 
 
     }
 
-    // displayMode() {
-      
-    // }
+    displayMode(div, hiddenDivs) {
+      const whiteBoardHTML = document.querySelector("#white-board")
+      whiteBoardHTML.style.gridTemplateColumns = '50% 50%'
+      whiteBoardHTML.style.gridTemplateRows = '50% 50%'
+      whiteBoardHTML.style.gridTemplateAreas = '"to-dos quotes" "doodles krazy-thoughts"'
+      hiddenDivs.forEach(divToShow => {
+        divToShow.style.display  = 'block'
+      })
+      if (div.id === 'to-dos') {
+        div.style.borderRadius = "30px 0 0 0"
+      } else if (div.id === 'quotes'){
+        div.style.borderRadius = "0 30px 0 0"
+      } else if (div.id === 'doodles') {
+        div.style.borderRadius = '0 0 0 30px'
+      } else {
+        div.style.borderRadius = "0 0 30px 0"
+      }
+      // console.log(div.querySelector('.edit'))
+      div.querySelector('.edit').style.display = 'block'
+
+
+
+
+    }
 
 
 
