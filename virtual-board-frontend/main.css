@@ -46,7 +46,7 @@ button:hover {
 
 #nav-bar {
   grid-area: nav-bar;
-  background-color: white;
+  background-color: #6e9cff;
 }
 
 #side-bar {
@@ -75,6 +75,9 @@ button:hover {
 
 #wb-title {
     grid-area: wb-title;
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-right: 5%;
     /* background-color: yellow; */
 }
 
@@ -129,13 +132,13 @@ button:hover {
     border-width: 1px;
 }
 
-#new-user-form {
+#user-form {
   padding-top: 10%;
   padding-bottom: 10%;
   /* background-image: url('./images/blue-post-it.png'); */
 }
 
-#new-user-form input, button {
+.user-form input, button {
     font-family: 'Permanent Marker', cursive;
     font-size: 15px;
 }

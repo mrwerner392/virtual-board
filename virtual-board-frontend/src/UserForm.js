@@ -2,10 +2,11 @@ class UserForm{
 
     constructor(callback, user = null){
         this.formDiv = document.createElement('div')
-        this.formDiv.id = 'new-user-form'
+        this.formDiv.id = 'user-form'
         this.formTitle = document.createElement('h1')
         this.formTitle.innerText = user ? 'Edit Info' : 'Sign Up'
         this.form = document.createElement('form')
+        this.form.classList.add('user-form')
         // Label/input for name, age, bio submit button for submit
         this.nameLabel = document.createElement('label')
         this.nameLabel.innerText = 'Name'
@@ -32,7 +33,7 @@ class UserForm{
         this.bioInput.style.width = '90%'
         user ? this.bioInput.value = user.bio : this.bioInput.placeholder = "Bio";
         this.submit = document.createElement('button')
-        this.submit.innerText = 'Create Account'
+        this.submit.innerText = user ? 'Save Changes' : 'Create Account'
         this.submit.style.marginTop = '5%'
         this.submit.type = 'submit'
 

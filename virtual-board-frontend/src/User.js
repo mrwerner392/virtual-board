@@ -40,8 +40,12 @@ class User {
     updateUserButton.innerText = 'Update Profile';
     updateUserButton.classList.add('user-action');
     updateUserButton.addEventListener('click', () => {
-      let updateUserForm = new UserForm(UserAdapter.updateUser, this);
       sideBar.content.innerHTML = '';
+      let updateHeader = document.createElement('h1')
+      updateHeader.innerText = 'Edit Info'
+      updateHeader.style.margin = '10% 0 10% 0'
+      sideBar.content.append(updateHeader)
+      let updateUserForm = new UserForm(UserAdapter.updateUser, this);
       sideBar.content.append(updateUserForm.form);
     })
     sideBar.content.append(updateUserButton)

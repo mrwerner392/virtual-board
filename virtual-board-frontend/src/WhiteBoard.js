@@ -14,8 +14,13 @@ class WhiteBoard {
     renderTitle() {
         const wbTitle = document.querySelector('#wb-title')
         const title = document.createElement('h3')
+        title.style.display = 'inline'
         title.innerText = this.title
-        wbTitle.append(title)
+        const updateTitle = document.createElement('button')
+        updateTitle.innerText = 'Change Whiteboard Name'
+        updateTitle.style.display = 'inline'
+        updateTitle.style.float = 'right'
+        wbTitle.append(title, updateTitle)
     }
 
     // Render to-dos
