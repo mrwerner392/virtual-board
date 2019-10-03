@@ -31,6 +31,7 @@ class WhiteBoard {
 
         // Render new to-do form
         let toDoForm = document.createElement('form')
+        toDoForm.classList.add('wb-form')
         let content = document.createElement('input')
         content.type = 'text'
         content.name = 'content'
@@ -77,6 +78,7 @@ class WhiteBoard {
 
       // Render new quote form
       let quoteForm = document.createElement('form')
+      quoteForm.classList.add('wb-form')
       let content = document.createElement('input')
       content.type = 'text'
       content.name = 'content'
@@ -122,6 +124,7 @@ class WhiteBoard {
 
        // Render new thought form
        let thoughtForm = document.createElement('form')
+       thoughtForm.classList.add('wb-form')
        let content = document.createElement('input')
        content.type = 'text'
        content.name = 'content'

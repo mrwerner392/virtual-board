@@ -88,3 +88,16 @@
  .list {
    list-style: none;
  }
+
+input {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+}
+
+li {
+  font-size: 20px;
+}
+
+/* .wb-form {
+  opacity: 0;
+} */
