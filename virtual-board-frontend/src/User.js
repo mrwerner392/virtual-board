@@ -48,6 +48,13 @@ class User {
     });
     sideBar.content.append(deleteUserButton);
 
+    let signOutButton = document.createElement('button');
+    signOutButton.innerText = 'Sign Out';
+    signOutButton.addEventListener('click', () => {
+      sideBar = new SideBar()
+    });
+    sideBar.content.append(signOutButton);
+
   }
 
   renderWhiteboard() {
