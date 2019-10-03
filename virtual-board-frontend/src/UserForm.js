@@ -31,7 +31,9 @@ class UserForm{
         this.bioInput.id = 'user-bio'
         this.bioInput.style.width = '90%'
         user ? this.bioInput.value = user.bio : this.bioInput.placeholder = "Bio";
-        this.submit = document.createElement('input')
+        this.submit = document.createElement('button')
+        this.submit.innerText = 'Create Account'
+        this.submit.style.marginTop = '5%'
         this.submit.type = 'submit'
 
         this.form.append(this.nameLabel, this.nameInput, this.ageLabel, this.ageInput, this.bioLabel, this.bioInput, this.submit)

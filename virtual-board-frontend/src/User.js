@@ -38,6 +38,7 @@ class User {
 
     let updateUserButton = document.createElement('button');
     updateUserButton.innerText = 'Update Profile';
+    updateUserButton.classList.add('user-action');
     updateUserButton.addEventListener('click', () => {
       let updateUserForm = new UserForm(UserAdapter.updateUser, this);
       sideBar.content.innerHTML = '';
@@ -47,6 +48,7 @@ class User {
 
     let deleteUserButton = document.createElement('button');
     deleteUserButton.innerText = 'Delete Profile';
+    deleteUserButton.classList.add('user-action');
     deleteUserButton.addEventListener('click', () => {
       UserAdapter.deleteUser(this.id);
     });
@@ -54,6 +56,7 @@ class User {
 
     let signOutButton = document.createElement('button');
     signOutButton.innerText = 'Sign Out';
+    signOutButton.classList.add('user-action');
     signOutButton.addEventListener('click', () => {
       sideBar = new SideBar()
       // reset main container
@@ -66,6 +69,8 @@ class User {
     sideBar.content.append(signOutButton);
 
     document.querySelector('#markers').style.opacity = '1';
+
+    this.renderWhiteboard()
   }
 
   renderWhiteboard() {
@@ -83,7 +88,7 @@ class User {
 
     pTag.addEventListener('click', () => {
       this.renderProfile()
-      this.renderWhiteboard()
+      // this.renderWhiteboard()
 
     })
     return pTag
