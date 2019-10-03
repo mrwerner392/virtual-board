@@ -55,6 +55,12 @@ class User {
     deleteUserButton.classList.add('user-action');
     deleteUserButton.addEventListener('click', () => {
       UserAdapter.deleteUser(this.id);
+      // reset main container
+      document.querySelector('#to-do-list').innerHTML = ''
+      document.querySelector('#quote-list').innerHTML = ''
+      document.querySelector('#doodles').innerHTML = ''
+      document.querySelector('#krazy-thought-list').innerHTML = ''
+      document.querySelector('#wb-title').innerHTML = ''
     });
     sideBar.content.append(deleteUserButton);
 
