@@ -31,6 +31,7 @@ class WhiteBoard {
 
         // Render new to-do form
         let toDoForm = document.createElement('form')
+        toDoForm.classList.add('wb-form')
         let content = document.createElement('input')
         content.type = 'text'
         content.name = 'content'
@@ -77,6 +78,7 @@ class WhiteBoard {
 
       // Render new quote form
       let quoteForm = document.createElement('form')
+      quoteForm.classList.add('wb-form')
       let content = document.createElement('input')
       content.type = 'text'
       content.name = 'content'
@@ -122,6 +124,7 @@ class WhiteBoard {
 
        // Render new thought form
        let thoughtForm = document.createElement('form')
+       thoughtForm.classList.add('wb-form')
        let content = document.createElement('input')
        content.type = 'text'
        content.name = 'content'
@@ -155,25 +158,10 @@ class WhiteBoard {
 
     }
 
-    // render canvas
-      // clear html of doodle div
-      // render new canvas object
     renderCanvas() {
       const doodleDiv = document.querySelector('#doodles')
       let canvas = new Canvas(this.doodle, this.id, this.userId)
       doodleDiv.append(...canvas.render())
-
-
     }
-
-    // // Render doodle
-    // renderDoodle() {
-    //   // Clear the canvas
-    //   context.clearRect(0, 0, canvas.width, canvas.height)
-    //   this.doodleDots.forEach(dotObj => {
-    //     let doodleDot = new DoodleDot(dotObj.x_coord, dotObj.y_coord, this.id, this.userId)
-    //     doodleDot.render()
-    //   })
-    // }
 
 }
