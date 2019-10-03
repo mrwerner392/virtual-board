@@ -22,9 +22,18 @@ class SideBar {
 
     let newUserForm = new UserForm(UserAdapter.addUser)
     this.content.append(newUserForm.formDiv)
-
-
+    this.handleMarkers()
   };
 
-
+  handleMarkers() {
+    document.querySelector('#markers').style.opacity = '0';
+    const markers = document.querySelectorAll('.marker')
+    markers.forEach(marker => {
+      marker.addEventListener('click', function(e) {
+        // console.log(this);
+        e.preventDefault()
+        document.querySelector('#white-board').style.color = this.id
+      })
+    })
+  }
 };

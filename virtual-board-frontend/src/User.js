@@ -12,23 +12,27 @@ class User {
     sideBar.content.innerHTML = '';
 
     // Labels and values for name, age, bio
-    let nameLabel = document.createElement('h2');
+    let nameLabel = document.createElement('h1');
     nameLabel.innerText = 'Name';
+    nameLabel.style.paddingTop = '20%'
 
-    let nameValue = document.createElement('h4');
+    let nameValue = document.createElement('h2');
     nameValue.innerText = this.name;
+    nameValue.style.padding = '10%'
 
-    let ageLabel = document.createElement('h2');
+    let ageLabel = document.createElement('h1');
     ageLabel.innerText = 'Age';
 
-    let ageValue = document.createElement('h4');
+    let ageValue = document.createElement('h2');
     ageValue.innerText = this.age;
+    ageValue.style.padding = '10%'
 
-    let bioLabel = document.createElement('h2');
+    let bioLabel = document.createElement('h1');
     bioLabel.innerText = 'Bio';
 
-    let bioValue = document.createElement('h4');
+    let bioValue = document.createElement('h2');
     bioValue.innerText = this.bio;
+    bioValue.style.padding = '10%'
 
     sideBar.content.append(nameLabel, nameValue, ageLabel, ageValue, bioLabel, bioValue);
 
@@ -61,6 +65,7 @@ class User {
     });
     sideBar.content.append(signOutButton);
 
+    document.querySelector('#markers').style.opacity = '1';
   }
 
   renderWhiteboard() {
