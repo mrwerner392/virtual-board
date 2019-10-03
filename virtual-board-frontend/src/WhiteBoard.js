@@ -63,12 +63,15 @@ class WhiteBoard {
 
         // Render individual to-dos
         const toDoList = document.querySelector('#to-do-list')
+        const toDoDiv = document.querySelector('#to-dos')
         toDoList.innerHTML = '';
         this.toDos.forEach(toDoObj => {
             let toDo = new ToDo(toDoObj.content, toDoObj.id, this.id, this.userId)
             toDoList.append(toDo.render())
         })
-
+        toDoDiv.addEventListener('click', (e) => {
+          this.editMode()
+        })
         // Render new to-do form
         let toDoForm = document.createElement('form')
         toDoForm.classList.add('wb-form')
@@ -206,5 +209,32 @@ class WhiteBoard {
       let canvas = new Canvas(this.doodle, this.id, this.userId)
       doodleDiv.append(...canvas.render())
     }
+
+    editMode() {
+      console.log(this)
+      const whiteBoardHTML = document.querySelector("#white-board")
+      const toDoDiv = document.querySelector('#to-dos')
+      const quoteDiv = document.querySelector('#quotes')
+      const doodleDiv = document.querySelector('#doodles')
+      const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
+      whiteBoardHTML.style.gridTemplateColumns = '100%'
+      whiteBoardHTML.style.gridTemplateRows = '100%'
+      whiteBoardHTML.style.gridTempateAreas = "'to-dos'"
+      
+      toDoDiv.style.borderRadius = '30px'
+
+      quoteDiv.style.display = 'none'
+      doodleDiv.style.display = 'none'
+      krazyThoughtDiv.style.display = 'none'
+
+
+
+    }
+
+    // displayMode() {
+      
+    // }
+
+
 
 }
