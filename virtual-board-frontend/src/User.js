@@ -52,6 +52,12 @@ class User {
     signOutButton.innerText = 'Sign Out';
     signOutButton.addEventListener('click', () => {
       sideBar = new SideBar()
+      // reset main container
+      document.querySelector('#to-do-list').innerHTML = ''
+      document.querySelector('#quote-list').innerHTML = ''
+      document.querySelector('#doodles').innerHTML = ''
+      document.querySelector('#krazy-thought-list').innerHTML = ''
+      document.querySelector('#wb-title').innerHTML = ''
     });
     sideBar.content.append(signOutButton);
 
