@@ -26,6 +26,7 @@ p {
 
 button {
   font-family: 'Permanent Marker', cursive;
+  border-radius: 20px;
 }
 
 button:hover {
@@ -166,6 +167,12 @@ button:hover {
 
 #black {
   color: black;
+}
+
+#new-title-input {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.5em;
+  min-width: 75%;
 }
 
  .list {
