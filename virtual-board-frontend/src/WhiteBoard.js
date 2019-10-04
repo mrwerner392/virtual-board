@@ -69,6 +69,9 @@ class WhiteBoard {
       toDoList.append(toDo.render())
     })
     const toDoDiv = document.querySelector('#to-dos')
+    if (toDoDiv.querySelector('.edit')) {
+      toDoDiv.querySelector('.edit').remove()
+    }
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit'
     editButton.className = "edit"
@@ -126,6 +129,9 @@ class WhiteBoard {
       quoteList.append(quote.render())
     })
     const quoteDiv = document.querySelector('#quotes')
+    if (quoteDiv.querySelector('.edit')) {
+      quoteDiv.querySelector('.edit').remove()
+    }
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit'
     editButton.className = "edit"
@@ -183,6 +189,9 @@ class WhiteBoard {
       thoughtList.append(thought.render())
     })
     const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
+    if (krazyThoughtDiv.querySelector('.edit')) {
+      krazyThoughtDiv.querySelector('.edit').remove()
+    }
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit'
     editButton.className = "edit"
@@ -232,6 +241,7 @@ class WhiteBoard {
 
   renderCanvas() {
     const doodleDiv = document.querySelector('#doodles')
+    doodleDiv.innerHTML = '';
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit'
     editButton.className = "edit"
