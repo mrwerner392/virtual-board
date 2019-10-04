@@ -61,6 +61,15 @@ class User {
       document.querySelector('#doodles').innerHTML = ''
       document.querySelector('#krazy-thought-list').innerHTML = ''
       document.querySelector('#wb-title').innerHTML = ''
+      
+      document.querySelector('#to-dos button').remove()
+      document.querySelector('#quotes button').remove()
+      document.querySelector('#krazy-thoughts button').remove()
+
+      document.querySelector('#to-dos h2').remove()
+      document.querySelector('#quotes h2').remove()
+      document.querySelector('#krazy-thoughts h2').remove()
+
     });
     sideBar.content.append(deleteUserButton);
 

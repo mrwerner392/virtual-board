@@ -66,7 +66,10 @@ class Canvas {
         mousedown = false
     })
 
+    debugger;
+
     this.doodle.doodle_dots.forEach((dotObj, index) => {
+        // debugger;
         setTimeout(() => DoodleDot.drawDot(context, dotObj.x_coord, dotObj.y_coord, color), index * 10)
     })
 
@@ -74,6 +77,7 @@ class Canvas {
     clearCanvas.innerText = 'Erase Art'
     clearCanvas.addEventListener('click', () => {
       context.clearRect(0, 0, canvas.width, canvas.height)
+      // debugger;
       fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}`, {
         method: 'DELETE'
       })
