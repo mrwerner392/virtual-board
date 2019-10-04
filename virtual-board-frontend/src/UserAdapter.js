@@ -6,6 +6,14 @@ class UserAdapter {
     .then(callback)
   }
 
+  // static getUser(id, color) {
+  //   fetch(`http://localhost:3000/users/${id}`)
+  //     .then(res => res.json())
+  //     .then(userObj => {
+  //       let user = new User(userObj.id, userObj.name, userObj.age, userObj.bio, userObj.whiteboard, color)
+  //       user.renderProfile()
+  //     })
+  // }
   // static getUser(id) {
   //   fetch('http://localhost:3000/users/' + id)
   //   .then(res => res.json())

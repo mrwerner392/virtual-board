@@ -65,6 +65,9 @@ class WhiteBoard {
     // Render individual to-dos
     const toDoList = document.querySelector('#to-do-list')
     const toDoDiv = document.querySelector('#to-dos')
+    if (!!toDoDiv.querySelector('h2')) {
+      toDoDiv.querySelector('h2').remove()
+    }
     toDoList.innerHTML = '';
     const toDoTitle = document.createElement('h2')
     toDoTitle.innerText = 'to-do list'
@@ -128,6 +131,9 @@ class WhiteBoard {
     // Render individual quotes
     const quoteList = document.querySelector('#quote-list')
     const quoteDiv = document.querySelector('#quotes')
+    if (!!quoteDiv.querySelector('h2')) {
+      quoteDiv.querySelector('h2').remove()
+    }
     quoteList.innerHTML = '';
     const quotesTitle = document.createElement('h2')
     quotesTitle.innerText = 'quotes'
@@ -191,6 +197,9 @@ class WhiteBoard {
     // Render individual thoughts
     const thoughtList = document.querySelector('#krazy-thought-list')
     const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
+    if (!!krazyThoughtDiv.querySelector('h2')) {
+      krazyThoughtDiv.querySelector('h2').remove()
+    }
     thoughtList.innerHTML = '';
     const thoughtTitle = document.createElement('h2')
     thoughtTitle.innerText = 'krazy thoughts'
@@ -239,7 +248,7 @@ class WhiteBoard {
         .then(res => res.json())
         .then(thoughtObj => {
           let thought = new Thought(thoughtObj.content, thoughtObj.id)
-          thoughtLi = thought.render()
+          let thoughtLi = thought.render()
           thoughtLi.querySelector('button').style.display = 'inline'
           thoughtList.insertBefore(thoughtLi, thoughtForm)
           thoughtForm.reset()
@@ -250,6 +259,10 @@ class WhiteBoard {
   }
 
   renderCanvas() {
+    // debugger;
+    console.log(this.color);
+    console.log(this.doodle);
+
     const doodleDiv = document.querySelector('#doodles')
     doodleDiv.innerHTML = '';
     const doodleDotTitle = document.createElement('h2')
@@ -264,25 +277,28 @@ class WhiteBoard {
     })
 
     let canvas = new Canvas(this.doodle, this.id, this.userId)
+    // debugger;
     doodleDiv.append(doodleDotTitle, ...canvas.render(this.color), editButton)
   }
 
-  renderMarkers() {
-    document.querySelector('#markers').style.opacity = '1';
-    const markers = document.querySelectorAll('.marker')
-    let that = this
-    markers.forEach(marker => {
-      marker.addEventListener('click', function(e) {
-        console.log(that);
-        // e.preventDefault()
-        // console.log(whiteboard)
-        //
-        document.querySelector('#white-board').style.color = this.id
-        that.color = this.id
-        that.renderCanvas()
-      })
-    })
-  }
+  // renderMarkers() {
+  //   console.log("It happened again")
+  //   document.querySelector('#markers').style.opacity = '1';
+  //   const markers = document.querySelectorAll('.marker')
+  //   let thisWhiteboard = this
+  //   markers.forEach(marker => {
+  //     marker.addEventListener('click', function(e) {
+  //       // debugger;
+  //       // console.log(that);
+  //       // e.preventDefault()
+  //       // console.log(whiteboard)
+  //       //
+  //       document.querySelector('#white-board').style.color = this.id
+  //       thisWhiteboard.color = this.id
+  //       thisWhiteboard.renderCanvas()
+  //     })
+  //   })
+  // }
 
   editMode(div) {
     const whiteBoardHTML = document.querySelector("#white-board")

@@ -221,7 +221,7 @@ canvas {
   font-family: 'Permanent Marker', cursive;
   font-size: 15px;
   border-style: none;
-  min-width: 80%;
+  width: 30%;
   /* box-shadow: 0 2px 0 black; */
 }
 

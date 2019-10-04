@@ -1,11 +1,12 @@
 class User {
 
-  constructor(id, name, age, bio, whiteboard) {
+  constructor(id, name, age, bio, whiteboard, color = 'red') {
     this.id = id;
     this.name = name;
     this.age = age;
     this.bio = bio;
     this.whiteboard = whiteboard
+    this.color = color
   };
 
   renderProfile() {
@@ -61,6 +62,15 @@ class User {
       document.querySelector('#doodles').innerHTML = ''
       document.querySelector('#krazy-thought-list').innerHTML = ''
       document.querySelector('#wb-title').innerHTML = ''
+
+      document.querySelector('#to-dos button').remove()
+      document.querySelector('#quotes button').remove()
+      document.querySelector('#krazy-thoughts button').remove()
+
+      document.querySelector('#to-dos h2').remove()
+      document.querySelector('#quotes h2').remove()
+      document.querySelector('#krazy-thoughts h2').remove()
+
     });
     sideBar.content.append(deleteUserButton);
 
@@ -90,16 +100,38 @@ class User {
     document.querySelector('#markers').style.opacity = '1';
 
     this.renderWhiteboard()
+    this.renderMarkers()
   }
 
   renderWhiteboard() {
-    let whiteboard = new WhiteBoard(this.whiteboard.id, this.whiteboard.title, this.whiteboard.to_dos, this.whiteboard.quotes, this.whiteboard.thoughts, this.whiteboard.doodle, this.id, 'red')
+    // debugger;
+    let whiteboard = new WhiteBoard(this.whiteboard.id, this.whiteboard.title, this.whiteboard.to_dos, this.whiteboard.quotes, this.whiteboard.thoughts, this.whiteboard.doodle, this.id, this.color)
     whiteboard.renderTitle()
     whiteboard.renderToDos()
     whiteboard.renderQuotes()
     whiteboard.renderThoughts()
     whiteboard.renderCanvas()
-    whiteboard.renderMarkers()
+    // whiteboard.renderMarkers()
+  }
+
+  renderMarkers() {
+    console.log("It happened again")
+    document.querySelector('#markers').style.opacity = '1';
+    const markers = document.querySelectorAll('.marker')
+    let thisUser = this
+    // console.log(this);
+    markers.forEach(marker => {
+      marker.addEventListener('click', function(e) {
+        // debugger;
+        // console.log(that);
+        // e.preventDefault()
+        // console.log(whiteboard)
+        //
+        document.querySelector('#white-board').style.color = this.id
+        thisUser.color = this.id
+        // UserAdapter.getUser(thisUser.id, thisUser.color)
+      })
+    })
   }
 
   makePTag() {
