@@ -65,28 +65,89 @@ class WhiteBoard {
         const toDoList = document.querySelector('#to-do-list')
         toDoList.innerHTML = '';
         this.toDos.forEach(toDoObj => {
-            let toDo = new ToDo(toDoObj.content, toDoObj.id, this.id, this.userId)
-            toDoList.append(toDo.render())
+          let toDo = new ToDo(toDoObj.content, toDoObj.id, this.id, this.userId)
+          toDoList.append(toDo.render())
         })
+        const toDoDiv = document.querySelector('#to-dos')
+        const editButton = document.createElement('button')
+        editButton.innerText = 'Edit'
+        editButton.className = "edit"
+        toDoDiv.append(editButton)
+        editButton.addEventListener('click', (e) => {
+          editButton.style.display = 'none'
+          this.editMode(toDoDiv)
+          let toDoForm = document.createElement('form')
+          toDoForm.classList.add('wb-form')
+          let content = document.createElement('input')
+          content.type = 'text'
+          content.name = 'content'
+          content.placeholder = 'What do you need to do...'
+          let submit = document.createElement('input')
+          submit.type = 'submit'
+          submit.style.display = 'none'
+          toDoForm.append(content, submit)
+          toDoList.append(toDoForm)
+  
+          toDoForm.addEventListener('submit', e => {
+            e.preventDefault();
+  
+            let content = e.target.content.value
+            fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/to_dos`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+              },
+              body: JSON.stringify({
+                content: content
+              })
+            })
+            .then(res => res.json())
+            .then(toDoObj => {
+              let toDo = new ToDo(toDoObj.content, toDoObj.id)
+              toDoList.insertBefore(toDo.render(), toDoForm)
+              toDoForm.reset()
+            })
+          })
+        })
+        
+      }
 
-        // Render new to-do form
-        let toDoForm = document.createElement('form')
-        toDoForm.classList.add('wb-form')
+      // Render quotes
+      renderQuotes() {
+        
+      // Render individual quotes
+      const quoteList = document.querySelector('#quote-list')
+      quoteList.innerHTML = '';
+      this.quotes.forEach(quoteObj => {
+        let quote = new Quote(quoteObj.content, quoteObj.id, this.id, this.userId)
+        quoteList.append(quote.render())
+      })
+      const quoteDiv = document.querySelector('#quotes')
+      const editButton = document.createElement('button')
+      editButton.innerText = 'Edit'
+      editButton.className = "edit"
+      quoteDiv.append(editButton)
+      editButton.addEventListener('click', (e) => {
+        editButton.style.display = 'none'
+        this.editMode(quoteDiv)
+        let quoteForm = document.createElement('form')
+        quoteForm.classList.add('wb-form')
         let content = document.createElement('input')
         content.type = 'text'
         content.name = 'content'
-        content.placeholder = 'What do you need to do...'
+        content.placeholder = 'What quotes inspire you...'
         let submit = document.createElement('input')
         submit.type = 'submit'
         submit.style.display = 'none'
-        toDoForm.append(content, submit)
-        toDoList.append(toDoForm)
-
-        toDoForm.addEventListener('submit', e => {
+        quoteForm.append(content, submit)
+        quoteList.append(quoteForm)
+        
+        quoteForm.addEventListener('submit', e => {
           e.preventDefault();
-
+  
           let content = e.target.content.value
-          fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/to_dos`, {
+          fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/quotes`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -97,114 +158,138 @@ class WhiteBoard {
             })
           })
           .then(res => res.json())
-          .then(toDoObj => {
-            let toDo = new ToDo(toDoObj.content, toDoObj.id)
-            toDoList.insertBefore(toDo.render(), toDoForm)
-            toDoForm.reset()
+          .then(quoteObj => {
+            let quote = new ToDo(quoteObj.content, quoteObj.id)
+            quoteList.insertBefore(quote.render(), quoteForm)
+            quoteForm.reset()
           })
-        })
-
-    }
-
-    // Render quotes
-    renderQuotes() {
-
-      // Render individual quotes
-      const quoteList = document.querySelector('#quote-list')
-      quoteList.innerHTML = '';
-      this.quotes.forEach(quoteObj => {
-          let quote = new Quote(quoteObj.content, quoteObj.id, this.id, this.userId)
-          quoteList.append(quote.render())
-      })
-
-      // Render new quote form
-      let quoteForm = document.createElement('form')
-      quoteForm.classList.add('wb-form')
-      let content = document.createElement('input')
-      content.type = 'text'
-      content.name = 'content'
-      content.placeholder = 'What quotes inspire you...'
-      let submit = document.createElement('input')
-      submit.type = 'submit'
-      submit.style.display = 'none'
-      quoteForm.append(content, submit)
-      quoteList.append(quoteForm)
-
-      quoteForm.addEventListener('submit', e => {
-        e.preventDefault();
-
-        let content = e.target.content.value
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/quotes`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({
-            content: content
-          })
-        })
-        .then(res => res.json())
-        .then(quoteObj => {
-          let quote = new ToDo(quoteObj.content, quoteObj.id)
-          quoteList.insertBefore(quote.render(), quoteForm)
-          quoteForm.reset()
         })
       })
 
+      
     }
-
+    
     // Render thoughts
     renderThoughts() {
       // Render individual thoughts
       const thoughtList = document.querySelector('#krazy-thought-list')
       thoughtList.innerHTML = '';
       this.thoughts.forEach(thoughtObj => {
-          let thought = new Thought(thoughtObj.content, thoughtObj.id, this.id, this.userId)
-          thoughtList.append(thought.render())
+        let thought = new Thought(thoughtObj.content, thoughtObj.id, this.id, this.userId)
+        thoughtList.append(thought.render())
       })
+      const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
+      const editButton = document.createElement('button')
+      editButton.innerText = 'Edit'
+      editButton.className = "edit"
+      krazyThoughtDiv.append(editButton)
+      editButton.addEventListener('click', (e) => {
+        editButton.style.display = 'none'
+        this.editMode(krazyThoughtDiv)
 
-       // Render new thought form
-       let thoughtForm = document.createElement('form')
-       thoughtForm.classList.add('wb-form')
-       let content = document.createElement('input')
-       content.type = 'text'
-       content.name = 'content'
-       content.placeholder = 'What are you thinking about...'
-       let submit = document.createElement('input')
-       submit.type = 'submit'
-       submit.style.display = 'none'
-       thoughtForm.append(content, submit)
-       thoughtList.append(thoughtForm)
-
-       thoughtForm.addEventListener('submit', e => {
-        e.preventDefault();
-
-        let content = e.target.content.value
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({
-            content: content
+        let thoughtForm = document.createElement('form')
+        thoughtForm.classList.add('wb-form')
+        let content = document.createElement('input')
+        content.type = 'text'
+        content.name = 'content'
+        content.placeholder = 'What are you thinking about...'
+        let submit = document.createElement('input')
+        submit.type = 'submit'
+        submit.style.display = 'none'
+        thoughtForm.append(content, submit)
+        thoughtList.append(thoughtForm)
+   
+        thoughtForm.addEventListener('submit', e => {
+           e.preventDefault();
+  
+          let content = e.target.content.value
+          fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            },
+            body: JSON.stringify({
+              content: content
+            })
+          })
+          .then(res => res.json())
+          .then(thoughtObj => {
+            let thought = new Thought(thoughtObj.content, thoughtObj.id)
+            thoughtList.insertBefore(thought.render(), thoughtForm)
+            thoughtForm.reset()
           })
         })
-        .then(res => res.json())
-        .then(thoughtObj => {
-          let thought = new Thought(thoughtObj.content, thoughtObj.id)
-          thoughtList.insertBefore(thought.render(), thoughtForm)
-          thoughtForm.reset()
-        })
       })
-
+      
     }
-
+    
     renderCanvas() {
       const doodleDiv = document.querySelector('#doodles')
+      const editButton = document.createElement('button')
+      editButton.innerText = 'Edit'
+      editButton.className = "edit"
+      doodleDiv.append(editButton)
+      editButton.addEventListener('click', (e) => {
+        editButton.style.display = 'none'
+        this.editMode(doodleDiv)
+      })
+
       let canvas = new Canvas(this.doodle, this.id, this.userId)
       doodleDiv.append(...canvas.render())
     }
+    
+    editMode(div) {
+      const whiteBoardHTML = document.querySelector("#white-board")
+      whiteBoardHTML.style.gridTemplateColumns = '100%'
+      whiteBoardHTML.style.gridTemplateRows = '100%'
+      whiteBoardHTML.style.gridTemplateAreas = `"${div.id}"`
+
+      div.style.borderRadius = '30px'
+      
+      let hiddenDivs = document.querySelectorAll(`.wb-section:not([id="${div.id}"`)
+      console.log(hiddenDivs)
+
+      hiddenDivs.forEach(divToHide => {
+        divToHide.style.display = 'none'
+        console.log(divToHide)
+      })
+      const closeButton = document.createElement('button')
+      closeButton.innerText = "close"
+      div.append(closeButton)
+      closeButton.addEventListener('click', () => {
+        closeButton.remove()
+        this.displayMode(div, hiddenDivs)
+      })
+
+
+    }
+
+    displayMode(div, hiddenDivs) {
+      const whiteBoardHTML = document.querySelector("#white-board")
+      whiteBoardHTML.style.gridTemplateColumns = '50% 50%'
+      whiteBoardHTML.style.gridTemplateRows = '50% 50%'
+      whiteBoardHTML.style.gridTemplateAreas = '"to-dos quotes" "doodles krazy-thoughts"'
+      hiddenDivs.forEach(divToShow => {
+        divToShow.style.display  = 'block'
+      })
+      if (div.id === 'to-dos') {
+        div.style.borderRadius = "30px 0 0 0"
+      } else if (div.id === 'quotes'){
+        div.style.borderRadius = "0 30px 0 0"
+      } else if (div.id === 'doodles') {
+        div.style.borderRadius = '0 0 0 30px'
+      } else {
+        div.style.borderRadius = "0 0 30px 0"
+      }
+      // console.log(div.querySelector('.edit'))
+      div.querySelector('.edit').style.display = 'block'
+
+
+
+
+    }
+
+
 
 }
