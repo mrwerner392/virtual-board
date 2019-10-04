@@ -79,7 +79,10 @@ class User {
       document.querySelector('#to-dos button').remove()
       document.querySelector('#quotes button').remove()
       document.querySelector('#krazy-thoughts button').remove()
-      // document.querySelector('#doodles button').remove()
+
+      document.querySelector('#to-dos h2').remove()
+      document.querySelector('#quotes h2').remove()
+      document.querySelector('#krazy-thoughts h2').remove()
 
     });
     sideBar.content.append(signOutButton);
@@ -90,12 +93,13 @@ class User {
   }
 
   renderWhiteboard() {
-    let whiteboard = new WhiteBoard(this.whiteboard.id, this.whiteboard.title, this.whiteboard.to_dos, this.whiteboard.quotes, this.whiteboard.thoughts, this.whiteboard.doodle, this.id)
+    let whiteboard = new WhiteBoard(this.whiteboard.id, this.whiteboard.title, this.whiteboard.to_dos, this.whiteboard.quotes, this.whiteboard.thoughts, this.whiteboard.doodle, this.id, 'red')
     whiteboard.renderTitle()
     whiteboard.renderToDos()
     whiteboard.renderQuotes()
     whiteboard.renderThoughts()
     whiteboard.renderCanvas()
+    whiteboard.renderMarkers()
   }
 
   makePTag() {

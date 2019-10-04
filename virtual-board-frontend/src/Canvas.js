@@ -6,7 +6,8 @@ class Canvas {
     this.userId = userId
   }
 
-  render() {
+  render(color) {
+    // console.log(color)
     const canvas = document.createElement('canvas')
     canvas.id = 'doodle-canvas'
     // canvas.width = canvas.clientWidth;
@@ -20,8 +21,9 @@ class Canvas {
 
         let x = e.offsetX
         let y = e.offsetY
-        console.log(e);
-        DoodleDot.drawDot(context,x,y)
+        console.log(color);
+        DoodleDot.drawDot(context,x,y, color)
+
 
         fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}/doodle_dots`, {
           method: "POST",
@@ -40,7 +42,7 @@ class Canvas {
         if (mousedown === true){
             let x = e.offsetX
             let y = e.offsetY
-            DoodleDot.drawDot(context,x,y)
+            DoodleDot.drawDot(context,x,y, color)
 
             fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}/doodle_dots`, {
               method: "POST",
@@ -65,7 +67,7 @@ class Canvas {
     })
 
     this.doodle.doodle_dots.forEach((dotObj, index) => {
-        setTimeout(() => DoodleDot.drawDot(context, dotObj.x_coord, dotObj.y_coord), index * 10)
+        setTimeout(() => DoodleDot.drawDot(context, dotObj.x_coord, dotObj.y_coord, color), index * 10)
     })
 
     const clearCanvas = document.createElement('button')

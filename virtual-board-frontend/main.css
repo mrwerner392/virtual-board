@@ -2,8 +2,15 @@ body {
   font-family: 'Permanent Marker', cursive;
 }
 
+ul {
+  padding: 0;
+  list-style-type: none;
+  /* overflow: scroll; */
+}
+
 li {
   font-size: 15px;
+  padding: 1%;
 }
 
 label {
@@ -31,6 +38,11 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+canvas {
+  display: block;
+  margin: auto;
 }
 
 #content-wrapper {
@@ -215,6 +227,8 @@ button:hover {
 
 .wb-section {
   background-color: white;
+  text-align: center;
+  overflow: scroll;
   /* border-style: solid;
   border-width: 1px; */
 }
@@ -246,6 +260,9 @@ p:hover {
   transform: scale(1.8)
 }
 
+.edit {
+  margin: auto;
+}
 
 /* .wb-form {
   opacity: 0;

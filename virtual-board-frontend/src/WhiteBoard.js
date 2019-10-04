@@ -1,6 +1,6 @@
 class WhiteBoard {
 
-  constructor(id, title, toDos, quotes, thoughts, doodle, userId) {
+  constructor(id, title, toDos, quotes, thoughts, doodle, userId, color) {
     this.id = id
     this.title =  title
     this.toDos = toDos
@@ -8,6 +8,7 @@ class WhiteBoard {
     this.thoughts = thoughts
     this.doodle = doodle
     this.userId = userId
+    this.color = color
   }
 
   // render title
@@ -63,12 +64,15 @@ class WhiteBoard {
 
     // Render individual to-dos
     const toDoList = document.querySelector('#to-do-list')
+    const toDoDiv = document.querySelector('#to-dos')
     toDoList.innerHTML = '';
+    const toDoTitle = document.createElement('h2')
+    toDoTitle.innerText = 'to-do list'
+    toDoDiv.prepend(toDoTitle)
     this.toDos.forEach(toDoObj => {
       let toDo = new ToDo(toDoObj.content, toDoObj.id, this.id, this.userId)
       toDoList.append(toDo.render())
     })
-    const toDoDiv = document.querySelector('#to-dos')
     if (toDoDiv.querySelector('.edit')) {
       toDoDiv.querySelector('.edit').remove()
     }
@@ -123,12 +127,15 @@ class WhiteBoard {
 
     // Render individual quotes
     const quoteList = document.querySelector('#quote-list')
+    const quoteDiv = document.querySelector('#quotes')
     quoteList.innerHTML = '';
+    const quotesTitle = document.createElement('h2')
+    quotesTitle.innerText = 'quotes'
+    quoteDiv.prepend(quotesTitle)
     this.quotes.forEach(quoteObj => {
       let quote = new Quote(quoteObj.content, quoteObj.id, this.id, this.userId)
       quoteList.append(quote.render())
     })
-    const quoteDiv = document.querySelector('#quotes')
     if (quoteDiv.querySelector('.edit')) {
       quoteDiv.querySelector('.edit').remove()
     }
@@ -183,12 +190,15 @@ class WhiteBoard {
   renderThoughts() {
     // Render individual thoughts
     const thoughtList = document.querySelector('#krazy-thought-list')
+    const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
     thoughtList.innerHTML = '';
+    const thoughtTitle = document.createElement('h2')
+    thoughtTitle.innerText = 'krazy thoughts'
+    krazyThoughtDiv.prepend(thoughtTitle)
     this.thoughts.forEach(thoughtObj => {
       let thought = new Thought(thoughtObj.content, thoughtObj.id, this.id, this.userId)
       thoughtList.append(thought.render())
     })
-    const krazyThoughtDiv = document.querySelector('#krazy-thoughts')
     if (krazyThoughtDiv.querySelector('.edit')) {
       krazyThoughtDiv.querySelector('.edit').remove()
     }
@@ -242,17 +252,36 @@ class WhiteBoard {
   renderCanvas() {
     const doodleDiv = document.querySelector('#doodles')
     doodleDiv.innerHTML = '';
+    const doodleDotTitle = document.createElement('h2')
+    doodleDotTitle.innerText = 'doodledots'
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit'
     editButton.className = "edit"
-    doodleDiv.append(editButton)
+    // doodleDiv.append(editButton)
     editButton.addEventListener('click', (e) => {
       editButton.style.display = 'none'
       this.editMode(doodleDiv)
     })
 
     let canvas = new Canvas(this.doodle, this.id, this.userId)
-    doodleDiv.append(...canvas.render())
+    doodleDiv.append(doodleDotTitle, ...canvas.render(this.color), editButton)
+  }
+
+  renderMarkers() {
+    document.querySelector('#markers').style.opacity = '1';
+    const markers = document.querySelectorAll('.marker')
+    let that = this
+    markers.forEach(marker => {
+      marker.addEventListener('click', function(e) {
+        console.log(that);
+        // e.preventDefault()
+        // console.log(whiteboard)
+        //
+        document.querySelector('#white-board').style.color = this.id
+        that.color = this.id
+        that.renderCanvas()
+      })
+    })
   }
 
   editMode(div) {
@@ -278,9 +307,11 @@ class WhiteBoard {
       this.displayMode(div, hiddenDivs)
     })
 
-    div.querySelector('ul').querySelectorAll('button').forEach(button => {
-      button.style.display = 'inline'
-    })
+    if (div.id !== "doodles") {
+      div.querySelector('ul').querySelectorAll('button').forEach(button => {
+        button.style.display = 'inline'
+      })
+    }
   }
 
   displayMode(div, hiddenDivs) {
@@ -301,7 +332,7 @@ class WhiteBoard {
       div.style.borderRadius = "0 0 30px 0"
     }
     // console.log(div.querySelector('.edit'))
-    div.querySelector('.edit').style.display = 'block'
+    div.querySelector('.edit').style.display = (div.id === 'doodles' ? 'inline' : 'block')
 
     if (div.id !== 'doodles') {
       div.querySelector('ul').querySelectorAll('button').forEach(button => {
