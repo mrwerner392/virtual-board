@@ -259,6 +259,10 @@ class WhiteBoard {
   }
 
   renderCanvas() {
+    // debugger;
+    console.log(this.color);
+    console.log(this.doodle);
+
     const doodleDiv = document.querySelector('#doodles')
     doodleDiv.innerHTML = '';
     const doodleDotTitle = document.createElement('h2')
@@ -277,22 +281,24 @@ class WhiteBoard {
     doodleDiv.append(doodleDotTitle, ...canvas.render(this.color), editButton)
   }
 
-  renderMarkers() {
-    document.querySelector('#markers').style.opacity = '1';
-    const markers = document.querySelectorAll('.marker')
-    let thisWhiteboard = this
-    markers.forEach(marker => {
-      marker.addEventListener('click', function(e) {
-        // console.log(that);
-        // e.preventDefault()
-        // console.log(whiteboard)
-        //
-        document.querySelector('#white-board').style.color = this.id
-        thisWhiteboard.color = this.id
-        thisWhiteboard.renderCanvas()
-      })
-    })
-  }
+  // renderMarkers() {
+  //   console.log("It happened again")
+  //   document.querySelector('#markers').style.opacity = '1';
+  //   const markers = document.querySelectorAll('.marker')
+  //   let thisWhiteboard = this
+  //   markers.forEach(marker => {
+  //     marker.addEventListener('click', function(e) {
+  //       // debugger;
+  //       // console.log(that);
+  //       // e.preventDefault()
+  //       // console.log(whiteboard)
+  //       //
+  //       document.querySelector('#white-board').style.color = this.id
+  //       thisWhiteboard.color = this.id
+  //       thisWhiteboard.renderCanvas()
+  //     })
+  //   })
+  // }
 
   editMode(div) {
     const whiteBoardHTML = document.querySelector("#white-board")

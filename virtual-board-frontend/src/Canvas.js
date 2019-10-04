@@ -66,7 +66,7 @@ class Canvas {
         mousedown = false
     })
 
-    debugger;
+    // debugger;
 
     this.doodle.doodle_dots.forEach((dotObj, index) => {
         // debugger;
