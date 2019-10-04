@@ -1,6 +1,6 @@
 class WhiteBoard {
 
-  constructor(id, title, toDos, quotes, thoughts, doodle, userId) {
+  constructor(id, title, toDos, quotes, thoughts, doodle, userId, color) {
     this.id = id
     this.title =  title
     this.toDos = toDos
@@ -8,6 +8,7 @@ class WhiteBoard {
     this.thoughts = thoughts
     this.doodle = doodle
     this.userId = userId
+    this.color = color
   }
 
   // render title
@@ -263,18 +264,22 @@ class WhiteBoard {
     })
 
     let canvas = new Canvas(this.doodle, this.id, this.userId)
-    doodleDiv.append(doodleDotTitle, ...canvas.render(), editButton)
+    doodleDiv.append(doodleDotTitle, ...canvas.render(this.color), editButton)
   }
 
   renderMarkers() {
     document.querySelector('#markers').style.opacity = '1';
     const markers = document.querySelectorAll('.marker')
+    let that = this
     markers.forEach(marker => {
       marker.addEventListener('click', function(e) {
-        console.log(this);
+        console.log(that);
         // e.preventDefault()
         // console.log(whiteboard)
+        //
         document.querySelector('#white-board').style.color = this.id
+        that.color = this.id
+        that.renderCanvas()
       })
     })
   }
