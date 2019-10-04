@@ -256,7 +256,6 @@ class WhiteBoard {
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit'
     editButton.className = "edit"
-    editButton.style.display = 'inline'
     // doodleDiv.append(editButton)
     editButton.addEventListener('click', (e) => {
       editButton.style.display = 'none'
@@ -265,6 +264,19 @@ class WhiteBoard {
 
     let canvas = new Canvas(this.doodle, this.id, this.userId)
     doodleDiv.append(doodleDotTitle, ...canvas.render(), editButton)
+  }
+
+  renderMarkers() {
+    document.querySelector('#markers').style.opacity = '1';
+    const markers = document.querySelectorAll('.marker')
+    markers.forEach(marker => {
+      marker.addEventListener('click', function(e) {
+        console.log(this);
+        // e.preventDefault()
+        // console.log(whiteboard)
+        document.querySelector('#white-board').style.color = this.id
+      })
+    })
   }
 
   editMode(div) {
@@ -315,7 +327,7 @@ class WhiteBoard {
       div.style.borderRadius = "0 0 30px 0"
     }
     // console.log(div.querySelector('.edit'))
-    div.querySelector('.edit').style.display = 'block'
+    div.querySelector('.edit').style.display = (div.id === 'doodles' ? 'inline' : 'block')
 
     if (div.id !== 'doodles') {
       div.querySelector('ul').querySelectorAll('button').forEach(button => {

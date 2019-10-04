@@ -99,6 +99,7 @@ class User {
     whiteboard.renderQuotes()
     whiteboard.renderThoughts()
     whiteboard.renderCanvas()
+    whiteboard.renderMarkers()
   }
 
   makePTag() {
