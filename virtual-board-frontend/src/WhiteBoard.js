@@ -307,7 +307,7 @@ class WhiteBoard {
       div.querySelector('ul').querySelectorAll('button').forEach(button => {
         button.style.display = 'none'
       })
-      div.querySelector('form').style.display = 'none'
+      div.querySelector('form').remove()
     }
 
   }
