@@ -13,6 +13,7 @@ class Quote {
 
     let deleteButton = document.createElement('button');
     deleteButton.innerText = 'x';
+    deleteButton.style.display = 'none';
     quoteLi.append(deleteButton);
 
     deleteButton.addEventListener('click', () => {

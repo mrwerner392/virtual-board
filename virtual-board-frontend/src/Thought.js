@@ -13,6 +13,7 @@ class Thought{
 
         let deleteButton = document.createElement('button');
         deleteButton.innerText = 'x';
+        deleteButton.style.display = 'none'
         thoughtLi.append(deleteButton);
 
         deleteButton.addEventListener('click', () => {
