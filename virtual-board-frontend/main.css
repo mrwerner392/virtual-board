@@ -1,5 +1,7 @@
 body {
   font-family: 'Permanent Marker', cursive;
+  overflow: hidden;
+  margin-top: 4px;
 }
 
 ul {
@@ -43,6 +45,10 @@ button:hover {
 canvas {
   display: block;
   margin: auto;
+}
+
+#side-bar {
+  overflow: scroll;
 }
 
 #content-wrapper {
