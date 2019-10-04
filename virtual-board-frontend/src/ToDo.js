@@ -13,6 +13,7 @@ class ToDo{
 
         let deleteButton = document.createElement('button');
         deleteButton.innerText = 'x';
+        deleteButton.style.display = 'none';
         toDoLi.append(deleteButton);
 
         deleteButton.addEventListener('click', () => {
