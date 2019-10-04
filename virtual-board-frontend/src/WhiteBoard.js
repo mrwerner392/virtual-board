@@ -76,39 +76,38 @@ class WhiteBoard {
         editButton.addEventListener('click', (e) => {
           editButton.style.display = 'none'
           this.editMode(toDoDiv)
-        })
-        // Render new to-do form
-        let toDoForm = document.createElement('form')
-        toDoForm.classList.add('wb-form')
-        let content = document.createElement('input')
-        content.type = 'text'
-        content.name = 'content'
-        content.placeholder = 'What do you need to do...'
-        let submit = document.createElement('input')
-        submit.type = 'submit'
-        submit.style.display = 'none'
-        toDoForm.append(content, submit)
-        toDoList.append(toDoForm)
-
-        toDoForm.addEventListener('submit', e => {
-          e.preventDefault();
-
-          let content = e.target.content.value
-          fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/to_dos`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json'
-            },
-            body: JSON.stringify({
-              content: content
+          let toDoForm = document.createElement('form')
+          toDoForm.classList.add('wb-form')
+          let content = document.createElement('input')
+          content.type = 'text'
+          content.name = 'content'
+          content.placeholder = 'What do you need to do...'
+          let submit = document.createElement('input')
+          submit.type = 'submit'
+          submit.style.display = 'none'
+          toDoForm.append(content, submit)
+          toDoList.append(toDoForm)
+  
+          toDoForm.addEventListener('submit', e => {
+            e.preventDefault();
+  
+            let content = e.target.content.value
+            fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/to_dos`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+              },
+              body: JSON.stringify({
+                content: content
+              })
             })
-          })
-          .then(res => res.json())
-          .then(toDoObj => {
-            let toDo = new ToDo(toDoObj.content, toDoObj.id)
-            toDoList.insertBefore(toDo.render(), toDoForm)
-            toDoForm.reset()
+            .then(res => res.json())
+            .then(toDoObj => {
+              let toDo = new ToDo(toDoObj.content, toDoObj.id)
+              toDoList.insertBefore(toDo.render(), toDoForm)
+              toDoForm.reset()
+            })
           })
         })
         
@@ -132,42 +131,41 @@ class WhiteBoard {
       editButton.addEventListener('click', (e) => {
         editButton.style.display = 'none'
         this.editMode(quoteDiv)
-      })
-
-      // Render new quote form
-      let quoteForm = document.createElement('form')
-      quoteForm.classList.add('wb-form')
-      let content = document.createElement('input')
-      content.type = 'text'
-      content.name = 'content'
-      content.placeholder = 'What quotes inspire you...'
-      let submit = document.createElement('input')
-      submit.type = 'submit'
-      submit.style.display = 'none'
-      quoteForm.append(content, submit)
-      quoteList.append(quoteForm)
-      
-      quoteForm.addEventListener('submit', e => {
-        e.preventDefault();
-
-        let content = e.target.content.value
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/quotes`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({
-            content: content
+        let quoteForm = document.createElement('form')
+        quoteForm.classList.add('wb-form')
+        let content = document.createElement('input')
+        content.type = 'text'
+        content.name = 'content'
+        content.placeholder = 'What quotes inspire you...'
+        let submit = document.createElement('input')
+        submit.type = 'submit'
+        submit.style.display = 'none'
+        quoteForm.append(content, submit)
+        quoteList.append(quoteForm)
+        
+        quoteForm.addEventListener('submit', e => {
+          e.preventDefault();
+  
+          let content = e.target.content.value
+          fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/quotes`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            },
+            body: JSON.stringify({
+              content: content
+            })
+          })
+          .then(res => res.json())
+          .then(quoteObj => {
+            let quote = new ToDo(quoteObj.content, quoteObj.id)
+            quoteList.insertBefore(quote.render(), quoteForm)
+            quoteForm.reset()
           })
         })
-        .then(res => res.json())
-        .then(quoteObj => {
-          let quote = new ToDo(quoteObj.content, quoteObj.id)
-          quoteList.insertBefore(quote.render(), quoteForm)
-          quoteForm.reset()
-        })
       })
+
       
     }
     
@@ -188,40 +186,39 @@ class WhiteBoard {
       editButton.addEventListener('click', (e) => {
         editButton.style.display = 'none'
         this.editMode(krazyThoughtDiv)
-      })
 
-      // Render new thought form
-       let thoughtForm = document.createElement('form')
-       thoughtForm.classList.add('wb-form')
-       let content = document.createElement('input')
-       content.type = 'text'
-       content.name = 'content'
-       content.placeholder = 'What are you thinking about...'
-       let submit = document.createElement('input')
-       submit.type = 'submit'
-       submit.style.display = 'none'
-       thoughtForm.append(content, submit)
-       thoughtList.append(thoughtForm)
-
-       thoughtForm.addEventListener('submit', e => {
-         e.preventDefault();
-
-         let content = e.target.content.value
-         fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
-           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({
-            content: content
+        let thoughtForm = document.createElement('form')
+        thoughtForm.classList.add('wb-form')
+        let content = document.createElement('input')
+        content.type = 'text'
+        content.name = 'content'
+        content.placeholder = 'What are you thinking about...'
+        let submit = document.createElement('input')
+        submit.type = 'submit'
+        submit.style.display = 'none'
+        thoughtForm.append(content, submit)
+        thoughtList.append(thoughtForm)
+   
+        thoughtForm.addEventListener('submit', e => {
+           e.preventDefault();
+  
+          let content = e.target.content.value
+          fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            },
+            body: JSON.stringify({
+              content: content
+            })
           })
-        })
-        .then(res => res.json())
-        .then(thoughtObj => {
-          let thought = new Thought(thoughtObj.content, thoughtObj.id)
-          thoughtList.insertBefore(thought.render(), thoughtForm)
-          thoughtForm.reset()
+          .then(res => res.json())
+          .then(thoughtObj => {
+            let thought = new Thought(thoughtObj.content, thoughtObj.id)
+            thoughtList.insertBefore(thought.render(), thoughtForm)
+            thoughtForm.reset()
+          })
         })
       })
       

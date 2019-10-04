@@ -75,11 +75,11 @@ class User {
       document.querySelector('#doodles').innerHTML = ''
       document.querySelector('#krazy-thought-list').innerHTML = ''
       document.querySelector('#wb-title').innerHTML = ''
-
+      
       document.querySelector('#to-dos button').remove()
       document.querySelector('#quotes button').remove()
-      document.querySelector('#doodles button').remove()
       document.querySelector('#krazy-thoughts button').remove()
+      // document.querySelector('#doodles button').remove()
       
     });
     sideBar.content.append(signOutButton);
