@@ -38,7 +38,7 @@ class WhiteBoard {
       titleForm.addEventListener('submit', e => {
         e.preventDefault()
         let newTitle = titleInput.value
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}`, {
+        fetch(`https://virtual-board-backend.herokuapp.com/users/${this.userId}/whiteboards/${this.id}`, {
           method: "PATCH",
           headers: {
             'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ class WhiteBoard {
         e.preventDefault();
 
         let content = e.target.content.value
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/to_dos`, {
+        fetch(`https://virtual-board-backend.herokuapp.com/users/${this.userId}/whiteboards/${this.id}/to_dos`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -168,7 +168,7 @@ class WhiteBoard {
         e.preventDefault();
 
         let content = e.target.content.value
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/quotes`, {
+        fetch(`https://virtual-board-backend.herokuapp.com/users/${this.userId}/whiteboards/${this.id}/quotes`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ class WhiteBoard {
         })
         .then(res => res.json())
         .then(quoteObj => {
-          let quote = new ToDo(quoteObj.content, quoteObj.id)
+          let quote = new Quote(quoteObj.content, quoteObj.id)
           let quoteLi = quote.render()
           quoteLi.querySelector('button').style.display = 'inline'
           quoteList.insertBefore(quoteLi, quoteForm)
@@ -235,7 +235,7 @@ class WhiteBoard {
         e.preventDefault();
 
         let content = e.target.content.value
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
+        fetch(`https://virtual-board-backend.herokuapp.com/users/${this.userId}/whiteboards/${this.id}/thoughts`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -316,6 +316,7 @@ class WhiteBoard {
       console.log(divToHide)
     })
     const closeButton = document.createElement('button')
+    closeButton.id = 'close-button'
     closeButton.innerText = "close"
     div.append(closeButton)
     closeButton.addEventListener('click', () => {

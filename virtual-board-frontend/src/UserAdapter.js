@@ -1,7 +1,8 @@
 class UserAdapter {
 
   static getAllUsers(callback) {
-    fetch('http://localhost:3000/users')
+    fetch('https://virtual-board-backend.herokuapp.com/users')
+    // fetch('http://localhost:3000/users')
     .then(res => res.json())
     .then(callback)
   }
@@ -21,7 +22,7 @@ class UserAdapter {
   // }
 
   static addUser(name, age, bio, callback) {
-    fetch('http://localhost:3000/users', {
+    fetch('https://virtual-board-backend.herokuapp.com/users', {
       method: "POST",
       headers: {
         'Content-Type': "application/json",
@@ -41,7 +42,7 @@ class UserAdapter {
   }
 
   static updateUser(name, age, bio, id) {
-    fetch('http://localhost:3000/users/' + id, {
+    fetch('https://virtual-board-backend.herokuapp.com/users/' + id, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ class UserAdapter {
   };
 
   static deleteUser(id) {
-    fetch('http://localhost:3000/users/' + id, {
+    fetch('https://virtual-board-backend.herokuapp.com/users/' + id, {
       method: "DELETE"
     })
     .then(res => res.json())
