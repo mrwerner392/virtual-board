@@ -25,7 +25,7 @@ class Canvas {
         DoodleDot.drawDot(context,x,y, color)
 
 
-        fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}/doodle_dots`, {
+        fetch(`https://virtual-board-backend.herokuapp.com/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}/doodle_dots`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ class Canvas {
             let y = e.offsetY
             DoodleDot.drawDot(context,x,y, color)
 
-            fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}/doodle_dots`, {
+            fetch(`https://virtual-board-backend.herokuapp.com/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}/doodle_dots`, {
               method: "POST",
               headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ class Canvas {
     clearCanvas.addEventListener('click', () => {
       context.clearRect(0, 0, canvas.width, canvas.height)
       // debugger;
-      fetch(`http://localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}`, {
+      fetch(`https://virtual-board-backend.herokuapp.com/users/${this.userId}/whiteboards/${this.whiteboardId}/doodles/${this.doodle.id}`, {
         method: 'DELETE'
       })
       .then(res => res.json())

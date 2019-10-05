@@ -17,7 +17,7 @@ class Thought{
         thoughtLi.append(deleteButton);
 
         deleteButton.addEventListener('click', () => {
-            fetch(`http:localhost:3000/users/${this.userId}/whiteboards/${this.whiteboardId}/thoughts/${this.id}`, {
+            fetch(`https://virtual-board-backend.herokuapp.com/users/${this.userId}/whiteboards/${this.whiteboardId}/thoughts/${this.id}`, {
               method: 'DELETE'
             })
             .then(res => res.json())

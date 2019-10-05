@@ -94,6 +94,9 @@ class User {
       document.querySelector('#quotes h2').remove()
       document.querySelector('#krazy-thoughts h2').remove()
 
+      if (!!document.querySelector('#close-button')) {
+        document.querySelector('#close-button').remove();
+      }
     });
     sideBar.content.append(signOutButton);
 
