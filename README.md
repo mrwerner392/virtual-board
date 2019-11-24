@@ -2,6 +2,11 @@
 
 This application provides a virtual whiteboard for users to track to-dos, inspirational quotes, general thought, and doodles
 
+## Authors
+
+- [Kenny Marks](https://github.com/kmarks2013)
+- [Matt Werner](https://github.com/mrwerner392)
+
 ## Features
 
 - Create an account
@@ -40,3 +45,5 @@ To test this application locally, first clone the master branch onto your machin
 - Vanilla CSS
 
 ## Demo
+
+View our video demo [here](https://youtu.be/WmptC7f5CX4)
