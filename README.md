@@ -1,6 +1,6 @@
 # Virtual Board
 
-This application provides a virtual whiteboard for users to track to-dos, inspirational quotes, general thought, and doodles
+This application provides a virtual whiteboard for users to track to-dos, inspirational quotes, general thoughts, and doodles
 
 ## Authors
 
